@@ -9,6 +9,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { ScreeningsListComponent } from './screenings-list/screenings-list.component';
 import { ScreeningComponent } from './screening/screening.component';
 import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './search/search.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { HomeComponent } from './home/home.component';
     MovieComponent,
     ScreeningsListComponent,
     ScreeningComponent,
-    HomeComponent
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
