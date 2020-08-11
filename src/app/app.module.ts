@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { MovieComponent } from './movie/movie.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { ScreeningsListComponent } from './screenings-list/screenings-list.component';
+import { ScreeningComponent } from './screening/screening.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesListComponent,
-    MovieComponent
+    MovieComponent,
+    ScreeningsListComponent,
+    ScreeningComponent
   ],
   imports: [
     BrowserModule,

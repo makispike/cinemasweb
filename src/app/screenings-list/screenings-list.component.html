@@ -1,0 +1,41 @@
+<div class="map-clean" style="margin-top: 72px;">
+  <div class="container">
+    <div class="intro">
+      <h2 class="text-center">Screenings</h2>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-lowercase d-xl-flex justify-content-xl-center">
+        <form><input class="form-control d-xl-flex align-items-xl-center" type="date" name="screeningDate" style="margin-right: 0px;margin-bottom: 19px;border-radius: 7px;border-width: 2px;border-style: solid;width: 187px;"></form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive table-borderless table-striped">
+          <table class="table">
+            <thead>
+            <tr>
+              <th class="text-center">Movie</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody style="border-style: none;">
+            <app-screening *ngFor="let movie of movies"
+                           [urlPhoto]='movie.urlPhoto'
+                           [title] = 'movie.title'
+                           [location] = 'movie.location'
+                           [venue] = 'movie.venue'
+                           [versions]='movie.versions.join(", ")'
+                           [genres]='movie.genres.join(", ")'
+                           [availableSeats] = 'movie.availableSeats'
+                           [time] = 'movie.time'></app-screening>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
