@@ -8,6 +8,7 @@ import { MovieComponent } from './movie/movie.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { ScreeningsListComponent } from './screenings-list/screenings-list.component';
 import { ScreeningComponent } from './screening/screening.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ScreeningComponent } from './screening/screening.component';
     MoviesListComponent,
     MovieComponent,
     ScreeningsListComponent,
-    ScreeningComponent
+    ScreeningComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
