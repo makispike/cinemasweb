@@ -24,9 +24,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/styles/Article-List.css",
+              "src/styles/bootstrap.min.css",
+              "src/styles/Map-Clean.css",
+              "src/styles/Projects-Clean.css",
+              "src/styles/smoothproducts.css",
+              "src/styles/Header-Dark.css",
+              "src/styles/baguetteBox.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/scripts/smoothproducts.min.js",
+              "src/scripts/theme.js"
+            ]
           },
           "configurations": {
             "production": {

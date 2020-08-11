@@ -1,0 +1,17 @@
+<div class="article-list">
+  <div class="container">
+    <!-- Start: Intro -->
+    <div class="intro">
+      <h2 class="text-center" style="margin-top: 100px;">Movies</h2>
+    </div>
+    <!-- End: Intro -->
+    <!-- Start: Articles -->
+    <div class="row articles row-cols-3">
+      <app-movie *ngFor="let movie of movies"
+                 [title] = 'movie.title'
+                 [description] = 'movie.description'
+                 [versions]='movie.versions.join(", ")'
+                 [genres]='movie.genres.join(", ")'></app-movie>
+    </div>
+  </div>
+</div>
