@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-screening',
@@ -16,9 +17,12 @@ export class ScreeningComponent implements OnInit {
   @Input() time: string;
   @Input() urlPhoto: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  onBuy() {
+    this.router.navigate(['/buy']);
+  }
 }

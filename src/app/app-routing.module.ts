@@ -5,13 +5,16 @@ import {ScreeningsListComponent} from './screenings-list/screenings-list.compone
 import {HomeComponent} from './home/home.component';
 import {SearchComponent} from './search/search.component';
 import {LocationsComponent} from './locations/locations.component';
+import {BuyComponent} from './buy/buy.component';
 
 const routes: Routes = [
   { path: 'movies', component: MoviesListComponent },
   { path: 'screenings', component: ScreeningsListComponent},
   { path: 'search', component: SearchComponent},
   { path: 'locations', component: LocationsComponent},
-  { path: 'home', component: HomeComponent}
+  { path: 'buy', component: BuyComponent},
+  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent}
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule} from '@angular/forms';
 import { LocationsComponent } from './locations/locations.component';
+import { BuyComponent } from './buy/buy.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LocationsComponent } from './locations/locations.component';
     ScreeningComponent,
     HomeComponent,
     SearchComponent,
-    LocationsComponent
+    LocationsComponent,
+    BuyComponent
   ],
   imports: [
     BrowserModule,
