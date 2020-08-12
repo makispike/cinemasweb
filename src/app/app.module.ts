@@ -11,6 +11,7 @@ import { ScreeningComponent } from './screening/screening.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule} from '@angular/forms';
+import { LocationsComponent } from './locations/locations.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
     ScreeningsListComponent,
     ScreeningComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    LocationsComponent
   ],
   imports: [
     BrowserModule,
