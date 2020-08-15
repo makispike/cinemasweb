@@ -11,6 +11,8 @@ export class MovieComponent implements OnInit {
   @Input() description: string;
   @Input() genres: string;
   @Input() versions: string;
+  @Input() locations: string;
+  @Input() photoUrl: string;
 
   constructor() { }
 

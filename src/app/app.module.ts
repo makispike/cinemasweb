@@ -13,6 +13,7 @@ import { SearchComponent } from './search/search.component';
 import {FormsModule} from '@angular/forms';
 import { LocationsComponent } from './locations/locations.component';
 import { BuyComponent } from './buy/buy.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BuyComponent } from './buy/buy.component';
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
