@@ -1,0 +1,92 @@
+{
+  "Navbar": {
+    "Home": "HOME",
+    "Locations": "LOCATIONS",
+    "Movies": "MOVIES",
+    "Screenings": "SCREENINGS",
+    "Search": "SEARCH",
+    "User": {
+      "User": "USER",
+      "Login": "Login",
+      "Profile": "Profile",
+      "Administration": "Administration",
+      "Logout": "Logout"
+    },
+    "Register": "Register"
+  },
+  "Footer": {
+    "GetStarted": {
+      "Title": "Get Started",
+      "Home": "Home",
+      "Register": "Sign up"
+    },
+    "AboutUs": {
+      "Title": "About Us",
+      "Company": "Company Information"
+    },
+    "Legal": {
+      "Title": "Legal",
+      "TermsOfService": "Terms of Service",
+      "TermsOfUse": "Terms of Use",
+      "Privacy": "Privacy Policy"
+    },
+    "Copyright": "© 2020 Copyright Olivier Van Hoeck"
+  },
+  "Home": {
+    "WelcomeTitle": "Welcome to Cinepolis",
+    "WelcomeDescription": "Let's watch something beautiful together.",
+    "Experience": "Experience it yourself",
+    "ExperienceText": "Cinepolis has extended the traditional cinema experience to a broader world of film and entertainment, and offers its audience maximum flexibility in the choice of when, where, and how to enjoy its program. Cinepolis wants to give visitors 'the ultimate movie experience' and, to that end, combines a state-of-the-art cinema infrastructure with a tailor-made offering for various target groups.",
+    "SignUp": "Register now"
+  },
+  "Locations": {
+    "Title": "Locations",
+    "Subtitle": "Select one of our locations in the menu to see its details!",
+    "Venues": "Number of venues:"
+  },
+  "Movies": {
+    "Title": "Movies",
+    "Versions": "Versions:",
+    "Genres": "Genres:"
+  },
+  "Screenings": {
+    "Title": "Screenings",
+    "Subtitle": "Select a date in order to see the movies airing at that date!",
+    "ResultsTitle": "Movies for selected date",
+    "Movie": "Title:",
+    "Location": "Location:",
+    "Venue": "Venue:",
+    "Genre": "Genre:",
+    "Version": "Versions:",
+    "AvailableSeats": "Available seats:",
+    "Time": "Time:",
+    "Buy": "Buy tickets"
+  },
+  "Search": {
+    "Title": "Search",
+    "Subtitle": "You can search for a screening by movie title, genre, location or date.",
+    "SearchBoxPlaceholder": "Search...",
+    "SearchButton": "Search",
+    "ResultsTitle": "Screenings matching your search"
+  },
+  "Buy": {
+    "Title": "Buy tickets",
+    "Subtitle1": "You are about to buy tickets for the following movie.",
+    "Subtitle2": "Select the amount of tickets and their price category.",
+    "MovieTitle": "Movie title",
+    "Location": "Location",
+    "Venue": "Venue",
+    "Date": "Screening date",
+    "Version": "Version",
+    "AmountOfTickets": "Amount of tickets",
+    "TotalPrice": "Total",
+    "CheckoutButton": "Checkout",
+    "BackButton": "Back to screenings"
+  },
+  "Profile": {
+
+  },
+  "Administration": {
+
+  }
+}

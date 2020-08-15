@@ -13,7 +13,9 @@ import { SearchComponent } from './search/search.component';
 import {FormsModule} from '@angular/forms';
 import { LocationsComponent } from './locations/locations.component';
 import { BuyComponent } from './buy/buy.component';
-import {HttpClientModule} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,16 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
+    TranslateModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    }),
     FormsModule,
     HttpClientModule
   ],
@@ -38,3 +50,6 @@ import {HttpClientModule} from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

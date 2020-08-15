@@ -1,0 +1,92 @@
+{
+  "Navbar": {
+    "Home": "ACCUEIL",
+    "Locations": "COMPLEXES",
+    "Movies": "FILMS",
+    "Screenings": "SEANCES",
+    "Search": "RECHERCHE",
+    "User": {
+      "User": "UTILISATEUR",
+      "Login": "Se connecter",
+      "Profile": "Profil",
+      "Administration": "Administration",
+      "Logout": "Se déconnecter"
+    },
+    "Register": "Enregistrement"
+  },
+  "Footer": {
+    "GetStarted": {
+      "Title": "Démarrer",
+      "Home": "Accueil",
+      "Register": "S'enregistrer"
+    },
+    "AboutUs": {
+      "Title": "A propos",
+      "Company": "L'entreprise"
+    },
+    "Legal": {
+      "Title": "Legal",
+      "TermsOfService": "Conditions générales",
+      "TermsOfUse": "Conditions d'utilisation",
+      "Privacy": "Vie privée"
+    },
+    "Copyright": "© 2020 Copyright Olivier Van Hoeck"
+  },
+  "Home": {
+    "WelcomeTitle": "Bienvenue à Cinepolis",
+    "WelcomeDescription": "Une soirée unique en perspective.",
+    "Experience": "Faites-en l'expérience",
+    "ExperienceText": "Cinepolis élargit l’expérience cinématographique traditionnelle à un univers plus vaste de film et de divertissement, et propose à son public une flexibilité maximale quant au choix du moment, du lieu et de la façon de profiter de cette offre. Cinepolis veut offrir à ses clients la meilleure expérience cinématographique et combine à cet effet une infrastructure de cinéma de pointe avec une offre à la mesure de différents groupes-cibles.",
+    "SignUp": "Enregistrez-vous"
+  },
+  "Locations": {
+    "Title": "Complexes",
+    "Subtitle": "Sélectionnez un de nos complexes dans le menu afin d'en voir les détails !",
+    "Venues": "Nombre de salles:"
+  },
+  "Movies": {
+    "Title": "Films",
+    "Versions": "Versions :",
+    "Genres": "Genres :"
+  },
+  "Screenings": {
+    "Title": "Séances",
+    "Subtitle": "Sélectionnez une date afin de voir les séances disponibles ce jour-là !",
+    "ResultsTitle": "Films pour la date sélectionnée",
+    "Movie": "Titre :",
+    "Location": "Complexe :",
+    "Venue": "Salle :",
+    "Genre": "Genres :",
+    "Version": "Version :",
+    "AvailableSeats": "Places disponibles :",
+    "Time": "Heure :",
+    "Buy": "Acheter tickets"
+  },
+  "Search": {
+    "Title": "Recherche",
+    "Subtitle": "Vous pouvez chercher une séance par le titre du film, par genre, par complexe ou par date.",
+    "SearchBoxPlaceholder": "Rechercher...",
+    "SearchButton": "Chercher",
+    "ResultsTitle": "Séances correspondant à vos critères"
+  },
+  "Buy": {
+    "Title": "Achat de vos tickets",
+    "Subtitle1": "Vous êtes sur le point d'acheter des tickets pour le film suivant.",
+    "Subtitle2": "Sélectionnez le nombre de tickets dans chaque catégorie de prix.",
+    "MovieTitle": "Titre du film",
+    "Location": "Complexe",
+    "Venue": "Numéro de salle",
+    "Date": "Date de la séance",
+    "Version": "Versions",
+    "AmountOfTickets": "Nombre de tickets",
+    "TotalPrice": "Prix total",
+    "CheckoutButton": "Soumettre",
+    "BackButton": "Retour aux séances"
+  },
+  "Profile": {
+
+  },
+  "Administration": {
+
+  }
+}
