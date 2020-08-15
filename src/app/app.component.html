@@ -1,56 +1,59 @@
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark clean-navbar">
-  <div class="container"><a class="navbar-brand logo" href="#">Cinepolis</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+  <div class="container"><a class="navbar-brand logo" routerLink="home">Cinepolis</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse"
          id="navcol-2">
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="home">Home</a></li>
-        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="locations">Locations</a></li>
-        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="movies">Movies</a></li>
-        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="screenings">Screenings</a></li>
-        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="search">Search</a></li>
-        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">EN</a>
-          <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-        </li>
-        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">USER</a>
+        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="home">{{'Navbar.Home' | translate}}</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="locations">{{'Navbar.Locations' | translate}}</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="movies">{{'Navbar.Movies' | translate}}</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="screenings">{{'Navbar.Screenings' | translate}}</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" routerLink="search">{{'Navbar.Search' | translate}}</a></li>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">{{languageInUse}}</a>
           <div class="dropdown-menu" role="menu">
-            <a class="dropdown-item" role="presentation" href="#">Login</a>
-            <a class="dropdown-item" role="presentation" routerLink="profile">Profile</a>
-            <a class="dropdown-item" role="presentation" routerLink="admin">Administration</a>
-            <a class="dropdown-item" role="presentation" href="#">Logout</a></div>
+            <a class="dropdown-item" role="presentation" style="user-select: none;" (click)="changeLanguage('en')">EN</a>
+            <a class="dropdown-item" role="presentation" style="user-select: none;" (click)="changeLanguage('fr')">FR</a>
+            <a class="dropdown-item" role="presentation" style="user-select: none;" (click)="changeLanguage('nl')">NL</a>
+          </div>
         </li>
-      </ul><button class="btn btn-secondary" type="button">Register</button></div>
+        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">{{'Navbar.User.User' | translate}}</a>
+          <div class="dropdown-menu" role="menu">
+            <a class="dropdown-item" role="presentation" href="#">{{'Navbar.User.Login' | translate}}</a>
+            <a class="dropdown-item" role="presentation" routerLink="profile">{{'Navbar.User.Profile' | translate}}</a>
+            <a class="dropdown-item" role="presentation" routerLink="admin">{{'Navbar.User.Administration' | translate}}</a>
+            <a class="dropdown-item" role="presentation" href="#">{{'Navbar.User.Logout' | translate}}</a></div>
+        </li>
+      </ul><button class="btn btn-secondary" type="button">{{'Navbar.Register' | translate}}</button></div>
   </div>
 </nav>
-
-      <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 <footer class="page-footer dark">
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
-        <h5>Get started</h5>
+        <h5>{{'Footer.GetStarted.Title' | translate}}</h5>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Sign up</a></li>
-          <li><a href="#">Downloads</a></li>
+          <li><a routerLink="home">{{'Footer.GetStarted.Home' | translate}}</a></li>
+          <li><a href="#">{{'Footer.GetStarted.Register' | translate}}</a></li>
         </ul>
       </div>
       <div class="col-sm-3">
-        <h5>About us</h5>
+        <h5>{{'Footer.AboutUs.Title' | translate}}</h5>
         <ul>
-          <li><a href="#">Company Information</a></li>
+          <li><a href="#">{{'Footer.AboutUs.Company' | translate}}</a></li>
         </ul>
       </div>
       <div class="col-sm-3">
-        <h5>Legal</h5>
+        <h5>{{'Footer.Legal.Title' | translate}}</h5>
         <ul>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">{{'Footer.Legal.TermsOfService' | translate}}</a></li>
+          <li><a href="#">{{'Footer.Legal.TermsOfUse' | translate}}</a></li>
+          <li><a href="#">{{'Footer.Legal.Privacy' | translate}}</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="footer-copyright">
-    <p>© 2020 Copyright Text</p>
+    <p>{{'Footer.Copyright' | translate}}</p>
   </div>
 </footer>

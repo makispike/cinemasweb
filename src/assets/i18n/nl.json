@@ -1,0 +1,92 @@
+{
+  "Navbar": {
+    "Home": "HOME",
+    "Locations": "Locaties",
+    "Movies": "Films",
+    "Screenings": "Voorstellingen",
+    "Search": "Zoeken",
+    "User": {
+      "User": "Gebruiker",
+      "Login": "Inloggen",
+      "Profile": "Gebruikersrofiel",
+      "Administration": "Administratie",
+      "Logout": "Uitloggen"
+    },
+    "Register": "Registratie"
+  },
+  "Footer": {
+    "GetStarted": {
+      "Title": "Begin",
+      "Home": "Startpagina",
+      "Register": "Registratie"
+    },
+    "AboutUs": {
+      "Title": "Over ons",
+      "Company": "Het bedrijf"
+    },
+    "Legal": {
+      "Title": "Legaal",
+      "TermsOfService": "Algemene voorwaarden",
+      "TermsOfUse": "Gebruikersvoorwaarden",
+      "Privacy": "Privacy"
+    },
+    "Copyright": "© 2020 Copyright Olivier Van Hoeck"
+  },
+  "Home": {
+    "WelcomeTitle": "Welkom bij Cinepolis",
+    "WelcomeDescription": "Een unieke avond in persepectief.",
+    "Experience": "Beleef de ervaring",
+    "ExperienceText": "Cinepolis weet de traditionele bioscoopervaring te verruimen tot een bredere wereld van film en entertainment, en biedt haar publiek maximale flexibiliteit in de keuze wanneer, waar en hoe van dit aanbod te genieten. Cinepolis wil haar klanten de ultieme filmbeleving bezorgen en combineert daartoe een state-of-the-art bioscoopinfrastructuur met een aanbod op maat van verschillende doelgroepen.",
+    "SignUp": "Inschrijven"
+  },
+  "Locations": {
+    "Title": "Locaties",
+    "Subtitle": "Selecteer één van onze locaties in het menu hieronder om de details ervan te bekijken!",
+    "Venues": "Aantal zalen:"
+  },
+  "Movies": {
+    "Title": "Films",
+    "Versions": "Versies :",
+    "Genres": "Genres :"
+  },
+  "Screenings": {
+    "Title": "Voorstellingen",
+    "Subtitle": "Selecteer een datum om de beschikbare voorstellingen te zien!",
+    "ResultsTitle": "Films voor de geselecteerde datum",
+    "Movie": "Titel:",
+    "Location": "Locatie:",
+    "Venue": "Zaal:",
+    "Genre": "Genres:",
+    "Version": "Versies:",
+    "AvailableSeats": "Aantal plaatsen:",
+    "Time": "Uur:",
+    "Buy": "Tickets kopen"
+  },
+  "Search": {
+    "Title": "Zoeken",
+    "Subtitle": "Je kan een voorstelling opzoeken volgens titel van de film, genre, locatie of per datum.",
+    "SearchBoxPlaceholder": "Zoeken...",
+    "SearchButton": "Zoeken",
+    "ResultsTitle": "Voorstellingen die aan de opgegeven criteria voldoen"
+  },
+  "Buy": {
+    "Title": "Tickets kopen",
+    "Subtitle1": "Je staat op het punt tickets te kopen voor onderstaande film.",
+    "Subtitle2": "Selecteer het gewenste aantal tickets voor elke prijscategorie.",
+    "MovieTitle": "Titel van de film",
+    "Location": "Locatie",
+    "Venue": "Zaalnummer",
+    "Date": "Datum van de voorstelling",
+    "Version": "Versie",
+    "AmountOfTickets": "Aantal tickets",
+    "TotalPrice": "Totaalprijs",
+    "CheckoutButton": "Reserveren",
+    "BackButton": "Terug naar de voorstellingen"
+  },
+  "Profile": {
+
+  },
+  "Administration": {
+
+  }
+}

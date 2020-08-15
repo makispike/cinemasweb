@@ -1,8 +1,8 @@
 <div class="map-clean" style="margin-top: 72px;">
   <div class="container">
     <div class="intro">
-      <h2 class="text-center">Buy tickets</h2>
-      <p class="text-center">You are about to buy tickets for the following movie.<br>Select the amount of tickets and their price category.</p>
+      <h2 class="text-center">{{'Buy.Title' | translate}}</h2>
+      <p class="text-center">{{'Buy.Subtitle1' | translate}}<br>{{'Buy.Subtitle2' | translate}}</p>
     </div>
   </div>
   <div class="container">
@@ -16,11 +16,11 @@
     <div class="row">
       <div class="col-md-12 text-left" style="border-width: 2px;border-style: solid;border-radius: 11px;">
         <form style="margin-top: 10px;margin-right: 10px;margin-bottom: 10px;margin-left: 10px;">
-          <div class="form-group"><label for="title">Movie title</label><input class="form-control form-control-sm" type="text" id="title" name="title" disabled="" style="width: auto"></div>
-          <div class="form-group"><label for="location">Location</label><input class="form-control form-control-sm" type="text" id="location" name="location" disabled="" style="width: auto"></div>
-          <div class="form-group"><label for="venue">Venue</label><input class="form-control form-control-sm" type="text" id="venue" name="venue" disabled="" style="width: auto"></div>
-          <div class="form-group"><label for="date">Screening date</label><input class="form-control form-control-sm" type="text" id="date" name="date" disabled="" style="width: auto"></div>
-          <div class="form-group"><label for="title">Version</label>
+          <div class="form-group"><label for="title">{{'Buy.MovieTitle' | translate}}</label><input class="form-control form-control-sm" type="text" id="title" name="title" disabled="" style="width: auto"></div>
+          <div class="form-group"><label for="location">{{'Buy.Location' | translate}}</label><input class="form-control form-control-sm" type="text" id="location" name="location" disabled="" style="width: auto"></div>
+          <div class="form-group"><label for="venue">{{'Buy.Venue' | translate}}</label><input class="form-control form-control-sm" type="text" id="venue" name="venue" disabled="" style="width: auto"></div>
+          <div class="form-group"><label for="date">{{'Buy.Date' | translate}}</label><input class="form-control form-control-sm" type="text" id="date" name="date" disabled="" style="width: auto"></div>
+          <div class="form-group"><label for="title">{{'Buy.Version' | translate}}</label>
             <div class="form-check" id="langFR"><input class="form-check-input" type="radio" id="checkFR" disabled=""><label class="form-check-label" for="checkFR">FR</label></div>
             <div class="form-check" id="langNL"><input class="form-check-input" type="radio" id="checkNL" disabled=""><label class="form-check-label" for="checkNL">NL</label></div>
             <div class="form-check" id="langEN"><input class="form-check-input" type="radio" id="checkEN" disabled=""><label class="form-check-label" for="checkEN">EN</label></div>
@@ -30,7 +30,7 @@
             <table class="table table-bordered">
               <thead>
               <tr>
-                <th style="width: 35%;">Amount of tickets</th>
+                <th style="width: 35%;">{{'Buy.AmountOfTickets' | translate}}</th>
               </tr>
               </thead>
               <tbody>
@@ -41,13 +41,13 @@
               </tr>
               <tr>
                 <td style="width: 20%;">
-                  <div class="form-group"><label for="priceTotal" style="font-weight: bold;">Total</label><input class="form-control form-control-sm" type="text" id="priceTotal" name="priceTotal" value="0€" disabled="" style="width: 100px"></div>
+                  <div class="form-group"><label for="priceTotal" style="font-weight: bold;">{{'Buy.TotalPrice' | translate}}</label><input class="form-control form-control-sm" type="text" id="priceTotal" name="priceTotal" value="0€" disabled="" style="width: 100px"></div>
                 </td>
               </tr>
               </tbody>
             </table>
-          </div><button class="btn btn-info" type="submit" style="margin-left: 45%;margin-bottom: 19px;">Checkout</button>
-          <button class="btn btn-danger" type="button" style="margin-left: 42%;margin-bottom: 19px;" (click)="onBack()">Back to screenings</button>
+          </div><button class="btn btn-info" type="submit" style="margin-left: 45%;margin-bottom: 19px;">{{'Buy.CheckoutButton' | translate}}</button>
+          <button class="btn btn-danger" type="button" style="margin-left: 42%;margin-bottom: 19px;" (click)="onBack()">{{'Buy.BackButton' | translate}}</button>
         </form>
       </div>
     </div>
