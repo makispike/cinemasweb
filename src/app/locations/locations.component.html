@@ -11,25 +11,27 @@
     <div class="form-group" style="margin-right: 10px;">
       <select [(ngModel)]="selectedLevel" [ngModelOptions]="{standalone: true}" (change)="selected()"
               class="border rounded custom-select custom-select-sm" style="margin-left: 10px;">
-        <option *ngFor="let location of locations" [ngValue]="location.location">{{location.location}}</option>
+        <option *ngFor="let location of locationsList; let i = index" [ngValue]="i">{{locationsList[i].locationName}}</option>
       </select>
     </div>
   </form>
 </div>
 <div style="margin-bottom: 30px;">
-  <div *ngIf="selectedLevel" class="container">
+  <div *ngIf="selectedLevel + 1" class="container">
     <div class="row">
       <div class="col-md-6">
-        <iframe allowfullscreen="" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDU3bB3xWAy_3jymPe2NV0pEKBZslOSj1w&amp;q=Kinepolis+Antwerpen&amp;zoom=15"
+        <iframe allowfullscreen="" frameborder="0" [src]="this.mapsURL"
                 width="100%" height="350">
         </iframe>
-        <img [src]="location[0].urlPhoto" width="100%">
+        <img [src]="this.photoURL" width="100%">
       </div>
       <div class="col-md-6">
-        <h3>{{location[0].venue}}</h3>
-        <p>{{location[0].details}}</p>
+        <h3>{{this.locationName}}</h3>
+        <p [hidden] = "!(this.appComponent.languageInUse === 'en')">{{this.detailsEN}}</p>
+        <p [hidden] = "!(this.appComponent.languageInUse === 'nl')">{{this.detailsNL}}</p>
+        <p [hidden] = "!(this.appComponent.languageInUse === 'fr')">{{this.detailsFR}}</p>
         <ul>
-          <li>{{'Locations.Venues' | translate}} {{location[0].numberOfVenues}}</li>
+          <li>{{'Locations.Venues' | translate}} {{this.numberOfVenues}}</li>
         </ul>
       </div>
     </div>

@@ -8,11 +8,8 @@
     <!-- Start: Articles -->
     <div class="row articles row-cols-3">
       <app-movie *ngFor="let movie of this.moviesList"
-                 [photoUrl]='movie.moviePictureUrl'
-                 [title] = 'movie.movieNameEN'
-                 [description] = 'movie.movieDescriptionEN'
-                 [versions]='joinAllVersionLabels(movie.versions)'
-                 [genres]='joinAllEnglishGenreLabels(movie.genres)'></app-movie>
+                 [movie]="movie"
+      ></app-movie>
     </div>
   </div>
 </div>

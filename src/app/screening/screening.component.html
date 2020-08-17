@@ -1,14 +1,18 @@
-<tr class="table-bordered table-responsive" style="margin-bottom: 10px">
-  <td class="text-center" style="width: 30%"><img style="width: 120px;height: 180px;" [src]='urlPhoto'></td>
+<tr [hidden] = "filtered" class="table-bordered table-responsive" style="margin-bottom: 10px">
+  <td class="text-center" style="width: 30%"><img style="width: 120px;height: 180px;" [src]='screening.movie.moviePictureUrl'></td>
   <td style="width: 40%" style="margin-left: 20px; margin-right: 20px">
     <ul>
-      <li><b>{{'Screenings.Movie' | translate}}</b> {{title}}</li>
-      <li><b>{{'Screenings.Location' | translate}}</b> {{location}}</li>
-      <li><b>{{'Screenings.Venue' | translate}}</b> {{venue}}</li>
-      <li><b>{{'Screenings.Genre' | translate}}</b> {{genres}}</li>
-      <li><b>{{'Screenings.Version' | translate}}</b> {{versions}}</li>
-      <li><b>{{'Screenings.AvailableSeats' | translate}}</b> {{availableSeats}}</li>
-      <li><b>{{'Screenings.Time' | translate}}</b> {{time}}</li>
+      <li [hidden] = "!(this.appComponent.languageInUse === 'en')"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameEN}}</li>
+      <li [hidden] = "!(this.appComponent.languageInUse === 'fr')"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameFR}}</li>
+      <li [hidden] = "!(this.appComponent.languageInUse === 'nl')"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameNL}}</li>
+      <li><b>{{'Screenings.Location' | translate}}</b> {{screening.venue.location.locationName}}</li>
+      <li><b>{{'Screenings.Venue' | translate}}</b> {{screening.venue.venueNumber}}</li>
+      <li [hidden] = "!(this.appComponent.languageInUse === 'en')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllEnglishGenres()}}</li>
+      <li [hidden] = "!(this.appComponent.languageInUse === 'fr')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllFrenchGenres()}}</li>
+      <li [hidden] = "!(this.appComponent.languageInUse === 'nl')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllDutchGenres()}}</li>
+      <li><b>{{'Screenings.Version' | translate}}</b> {{getAllVersions()}}</li>
+      <li><b>{{'Screenings.AvailableSeats' | translate}}</b> {{screening.availableSeats}}</li>
+      <li><b>{{'Screenings.Time' | translate}}</b> {{screening.screeningTime}}</li>
     </ul>
   </td>
   <td class="align-middle" style="width: 30%"><button class="btn btn-secondary" type="button" (click)="onBuy()">{{'Screenings.Buy' | translate}}</button></td>

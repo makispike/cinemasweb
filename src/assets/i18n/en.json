@@ -60,7 +60,8 @@
     "Version": "Versions:",
     "AvailableSeats": "Available seats:",
     "Time": "Time:",
-    "Buy": "Buy tickets"
+    "Buy": "Buy tickets",
+    "Reset": "Reset"
   },
   "Search": {
     "Title": "Search",

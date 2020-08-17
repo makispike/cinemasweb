@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {LocationserviceService} from '../services/locationservice.service';
+import {Location} from '../services/location';
+import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import {AppComponent} from '../app.component';
 
 @Component({
@@ -7,46 +10,42 @@ import {AppComponent} from '../app.component';
   styleUrls: ['./locations.component.css']
 })
 export class LocationsComponent implements OnInit {
+  locationsList: Location[];
   selectedLevel;
 
-  location = [
-    {
-      venue: 'Kinepolis Antwerpen',
-      numberOfVenues: '10',
-      details: 'Hello everyone',
-      urlPhoto: 'https://i.imgur.com/ATwNVRG.png'
-    }];
+  mapsURL: SafeResourceUrl;
+  photoURL: string;
+  detailsEN: string;
+  detailsFR: string;
+  detailsNL: string;
+  locationName: string;
+  numberOfVenues: number;
 
-  location2 = [
-    {
-      title: 'Pulp Fiction',
-      location: 'lol',
-      venue: 'Kinepolis Gent',
-      genres: ['action', 'romance'],
-      versions: ['VOST', 'VF'],
-      availableSeats: '5',
-      time: '12:00',
-      urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
-    }];
-
-  locations = [
-    {
-      id: '1',
-      location: 'Kinepolis Antwerpen'
-    },
-    {
-      id: '2',
-      location: 'Kinepolis Gent'
-    }];
-
-  constructor() {
+  constructor(private locationsService: LocationserviceService, private sanitizer: DomSanitizer, public appComponent: AppComponent) {
   }
 
   ngOnInit(): void {
+    this.fetchAllLocations();
   }
 
   selected() {
+    this.mapsURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.createLocationMapURL(this.locationsList[this.selectedLevel]));
+    this.photoURL = this.locationsList[this.selectedLevel].locationPhotoUrl;
+    this.detailsEN = this.locationsList[this.selectedLevel].locationDescriptionEN;
+    this.detailsFR = this.locationsList[this.selectedLevel].locationDescriptionFR;
+    this.detailsNL = this.locationsList[this.selectedLevel].locationDescriptionNL;
+    this.locationName = this.locationsList[this.selectedLevel].locationName;
+    this.numberOfVenues = this.locationsList[this.selectedLevel].venues.length;
     console.log(this.selectedLevel);
+  }
+
+  fetchAllLocations(): void {
+    this.locationsService.getAllLocations().subscribe(locations => this.locationsList = locations);
+  }
+
+  createLocationMapURL(singleLocation: Location): string {
+    const startUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDU3bB3xWAy_3jymPe2NV0pEKBZslOSj1w&q=';
+    return startUrl.concat(singleLocation.locationName.replace(' ', '+'));
   }
 
 }

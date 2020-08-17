@@ -1,65 +1,39 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import {Movie} from './movie';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {Version} from './version';
 import {Genre} from './genre';
+import {Location} from './location';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieserviceService {
-  private movieList: Movie[];
-  singleMovie: any = [];
-  movies = [
-    {
-      id: '1',
-      title: 'Pulp Fiction',
-      description: 'lol',
-      genres: ['action', 'romance'],
-      versions: ['VOST', 'VF'],
-      locations: ['Antwerpen', 'Hasselt'],
-    }
-  ];
+export class LocationserviceService {
+  private locationsList: Location[];
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private httpClient: HttpClient) {
-  }
-
-  getAllMoviesFromServerOld() {
-    this.httpClient
-      .get<Movie[]>('http://localhost:8080/movies/all')
-      .subscribe(
-        (response) => {
-          this.movieList = response;
-          console.log(this.movieList);
-        },
-        (error) => {
-          this.handleError(error);
-        }
+  getAllLocations(): Observable<Location[]> {
+    return this.httpClient.get<Location[]>('http://localhost:8080/location/all')
+      .pipe(
+        tap(_ => console.log('Fetched all locations' + _.entries())),
+        catchError(this.handleError<Location[]>([]))
       );
   }
 
-  getAllMovies(): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>('http://localhost:8080/movies/all')
+  getSingleLocation(id: number): Observable<Location[]> {
+    return this.httpClient.get<Location[]>('http://localhost:8080/location/' + id)
       .pipe(
-        tap(_ => console.log('Fetched all movies' + _.entries())),
-        catchError(this.handleError<Movie[]>([]))
-      );
-  }
-
-  getSingleMovie(id: number): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>('http://localhost:8080/movies/' + id)
-      .pipe(
-        tap(_ => console.log('Fetched movie with id ' + id)),
-        catchError(this.handleError<Movie[]>([]))
+        tap(_ => console.log('Fetched location with id ' + id)),
+        catchError(this.handleError<Location[]>([]))
       );
   }
 
   private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
       // show the error in the console
-      console.error('Error calling the movies API: ' + error);
+      console.error('Error calling the locations API: ' + error);
       // return empty result.
       return of(result as T);
     };

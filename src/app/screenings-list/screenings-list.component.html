@@ -6,11 +6,11 @@
     </div>
   </div>
 </div>
-<div style="margin-bottom: 40px;">
+<div style="margin-bottom: 40px;" align-content-center>
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-lowercase d-xl-flex justify-content-xl-center">
-        <form><input class="form-control d-xl-flex align-items-xl-center" type="date" name="screeningDate" style="margin-right: 0px;margin-bottom: 19px;border-radius: 7px;border-width: 2px;border-style: solid;width: 187px;"></form>
+        <form  name="screeningDate"><input [(ngModel)]="selectedDate" (change)="onChangeDate()" class="form-control d-xl-flex align-items-xl-center" type="date" name="screeningDate" style="margin-right: 0px;margin-bottom: 19px;border-radius: 7px;border-width: 2px;border-style: solid;width: 187px;"></form>
       </div>
     </div>
     <div class="row">
@@ -23,19 +23,14 @@
             </tr>
             </thead>
             <tbody style="border-style: none;">
-            <app-screening *ngFor="let movie of movies"
-                           [urlPhoto]='movie.urlPhoto'
-                           [title] = 'movie.title'
-                           [location] = 'movie.location'
-                           [venue] = 'movie.venue'
-                           [versions]='movie.versions.join(", ")'
-                           [genres]='movie.genres.join(", ")'
-                           [availableSeats] = 'movie.availableSeats'
-                           [time] = 'movie.time'></app-screening>
+            <app-screening *ngFor="let screening of screeningsList"
+                           [screening]="screening"
+                           [filtered]="!(screening.screeningDate.includes(this.selectedDate))"></app-screening>
             </tbody>
           </table>
         </div>
       </div>
+      <div class="col text-center"><button class="btn btn-danger" type="button" style="margin-bottom: 19px;">{{'Screenings.Reset' | translate}}</button></div>
     </div>
   </div>
 </div>

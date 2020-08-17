@@ -7,5 +7,5 @@ export interface Screening {
   screeningTime: string;
   availableSeats: number;
   venue: Venue;
-  movies: Movie[];
+  movie: Movie;
 }

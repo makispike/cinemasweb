@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ScreeningserviceService} from '../services/screeningservice.service';
+import {Screening} from '../services/screening';
 
 @Component({
   selector: 'app-screenings-list',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./screenings-list.component.css']
 })
 export class ScreeningsListComponent implements OnInit {
+  screeningsList: Screening[];
   movies = [
     {
       title: 'Pulp Fiction',
@@ -38,10 +41,20 @@ export class ScreeningsListComponent implements OnInit {
       urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
     },
   ];
+  selectedDate: string;
 
-  constructor() { }
+  constructor(public screeningsService: ScreeningserviceService) { }
 
   ngOnInit(): void {
+    this.fetchAllScreenings();
   }
 
+  fetchAllScreenings(): void {
+    this.screeningsService.getAllScreenings().subscribe(screenings => this.screeningsList = screenings);
+  }
+
+  onChangeDate(): void {
+    console.log(this.selectedDate);
+    // this.screeningsService.getAllScreeningsByDate(date).subscribe(screenings => this.screeningsList = screenings);
+  }
 }

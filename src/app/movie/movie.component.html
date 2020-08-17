@@ -3,20 +3,42 @@
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th class="border rounded-0 border-white"><strong>{{title}}</strong><br></th>
+        <th [hidden]="!(appComponent.languageInUse === 'en')" class="border rounded-0 border-white"><strong>{{movie.movieNameEN}}</strong><br></th>
+      </tr>
+      <tr>
+        <th [hidden]="!(appComponent.languageInUse === 'fr')" class="border rounded-0 border-white"><strong>{{movie.movieNameFR}}</strong><br></th>
+      </tr>
+      <tr>
+        <th [hidden]="!(appComponent.languageInUse === 'nl')" class="border rounded-0 border-white"><strong>{{movie.movieNameNL}}</strong><br></th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <td class="border-white"><img src="{{photoUrl}}" class="img-fluid" width="360px" height="540px" style="width: 120px;height: 180px;"></td>
+        <td class="border-white"><img src="{{movie.moviePictureUrl}}" class="img-fluid" width="360px" height="540px" style="width: 120px;height: 180px;"></td>
       </tr>
       <tr>
-        <td class="border rounded-0 border-white">{{description}}<br></td>
+        <td [hidden]="!(appComponent.languageInUse === 'en')" class="border rounded-0 border-white">{{movie.movieDescriptionEN}}<br></td>
       </tr>
       <tr>
+        <td [hidden]="!(appComponent.languageInUse === 'fr')" class="border rounded-0 border-white">{{movie.movieDescriptionFR}}<br></td>
+      </tr>
+      <tr>
+        <td [hidden]="!(appComponent.languageInUse === 'nl')" class="border rounded-0 border-white">{{movie.movieDescriptionNL}}<br></td>
+      </tr>
+      <tr [hidden]="!(appComponent.languageInUse === 'en')">
         <td class="border rounded-0 border-white">
-          <p class="description"><b>{{'Movies.Versions' | translate }}</b> {{versions}}</p>
-          <p class="description"><b>{{'Movies.Genres' | translate }}</b> {{genres}}</p><br></td>
+          <p class="description"><b>{{'Movies.Versions' | translate }}</b> {{getAllVersions()}}</p>
+          <p class="description"><b>{{'Movies.Genres' | translate }}</b> {{getAllEnglishGenres()}}</p><br></td>
+      </tr>
+      <tr [hidden]="!(appComponent.languageInUse === 'fr')">
+        <td class="border rounded-0 border-white">
+          <p class="description"><b>{{'Movies.Versions' | translate }}</b> {{getAllVersions()}}</p>
+          <p class="description"><b>{{'Movies.Genres' | translate }}</b> {{getAllFrenchGenres()}}</p><br></td>
+      </tr>
+      <tr [hidden]="!(appComponent.languageInUse === 'nl')">
+        <td class="border rounded-0 border-white">
+          <p class="description"><b>{{'Movies.Versions' | translate }}</b> {{getAllVersions()}}</p>
+          <p class="description"><b>{{'Movies.Genres' | translate }}</b> {{getAllDutchGenres()}}</p><br></td>
       </tr>
       </tbody>
     </table>
