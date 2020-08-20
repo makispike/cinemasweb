@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {LocationserviceService} from '../services/locationservice.service';
-import {Location} from '../services/location';
-import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {LocationService} from '../services/location.service';
+import {Location} from '../services/models/location';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {AppComponent} from '../app.component';
 
 @Component({
@@ -12,7 +12,6 @@ import {AppComponent} from '../app.component';
 export class LocationsComponent implements OnInit {
   locationsList: Location[];
   selectedLevel;
-
   mapsURL: SafeResourceUrl;
   photoURL: string;
   detailsEN: string;
@@ -21,7 +20,9 @@ export class LocationsComponent implements OnInit {
   locationName: string;
   numberOfVenues: number;
 
-  constructor(private locationsService: LocationserviceService, private sanitizer: DomSanitizer, public appComponent: AppComponent) {
+  constructor(private locationsService: LocationService,
+              private sanitizer: DomSanitizer,
+              public appComponent: AppComponent) {
   }
 
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class LocationsComponent implements OnInit {
   }
 
   selected() {
+    // There is a security on this type of resource, stopping it from showing. We need to deactivate that security first.
     this.mapsURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.createLocationMapURL(this.locationsList[this.selectedLevel]));
     this.photoURL = this.locationsList[this.selectedLevel].locationPhotoUrl;
     this.detailsEN = this.locationsList[this.selectedLevel].locationDescriptionEN;
@@ -43,6 +45,7 @@ export class LocationsComponent implements OnInit {
     this.locationsService.getAllLocations().subscribe(locations => this.locationsList = locations);
   }
 
+  // This is based on the (existing) Kinepolis locations, inserted into an URL which will then be used to call the Google Maps API.
   createLocationMapURL(singleLocation: Location): string {
     const startUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDU3bB3xWAy_3jymPe2NV0pEKBZslOSj1w&q=';
     return startUrl.concat(singleLocation.locationName.replace(' ', '+'));

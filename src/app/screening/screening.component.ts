@@ -1,10 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Screening} from '../services/screening';
-import {Version} from '../services/version';
-import {Genre} from '../services/genre';
+import {Screening} from '../services/models/screening';
 import {AppComponent} from '../app.component';
-import {MovieserviceService} from '../services/movieservice.service';
+import {MovieService} from '../services/movie.service';
 
 @Component({
   selector: 'app-screening',
@@ -12,33 +9,17 @@ import {MovieserviceService} from '../services/movieservice.service';
   styleUrls: ['./screening.component.css']
 })
 export class ScreeningComponent implements OnInit {
-  @Input() title: string;
-  @Input() description: string;
-  @Input() venue: number;
-  @Input() genres: Genre[];
-  @Input() versions: Version[];
-  @Input() location: string;
-  @Input() availableSeats: string;
-  @Input() time: string;
-  @Input() urlPhoto: string;
-
-  @Input()filtered;
+  @Input() filtered;
   @Input() selectedDate: string;
   @Input() screening: Screening;
+  id: number;
 
-  constructor(private router: Router, public appComponent: AppComponent, public moviesService: MovieserviceService) { }
+  constructor(public appComponent: AppComponent,
+              public moviesService: MovieService) { }
 
   ngOnInit(): void {
     console.log(this.selectedDate);
     console.log(this.screening.screeningDate);
-  }
-
-  onBuy() {
-    this.router.navigate(['/buy']);
-  }
-
-  getAllVersions() {
-    return this.moviesService.joinAllVersionLabels(this.screening.movie.versions);
   }
 
   getAllEnglishGenres() {

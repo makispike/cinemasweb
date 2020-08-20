@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Movie} from './movie';
+import {Movie} from './models/movie';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {Version} from './version';
-import {Genre} from './genre';
+import {Version} from './models/version';
+import {Genre} from './models/genre';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieserviceService {
+export class MovieService {
   private movieList: Movie[];
   singleMovie: any = [];
   movies = [
@@ -28,7 +28,7 @@ export class MovieserviceService {
 
   getAllMoviesFromServerOld() {
     this.httpClient
-      .get<Movie[]>('http://localhost:8080/movies/all')
+      .get<Movie[]>('http://localhost:8081/movies/all')
       .subscribe(
         (response) => {
           this.movieList = response;
@@ -41,7 +41,7 @@ export class MovieserviceService {
   }
 
   getAllMovies(): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>('http://localhost:8080/movies/all')
+    return this.httpClient.get<Movie[]>('http://localhost:8081/movies/all')
       .pipe(
         tap(_ => console.log('Fetched all movies' + _.entries())),
         catchError(this.handleError<Movie[]>([]))
@@ -49,7 +49,7 @@ export class MovieserviceService {
   }
 
   getSingleMovie(id: number): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>('http://localhost:8080/movies/' + id)
+    return this.httpClient.get<Movie[]>('http://localhost:8081/movies/' + id)
       .pipe(
         tap(_ => console.log('Fetched movie with id ' + id)),
         catchError(this.handleError<Movie[]>([]))

@@ -1,21 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MoviesListComponent } from './movies-list/movies-list.component';
-import { MovieComponent } from './movie/movie.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {MoviesListComponent} from './movies-list/movies-list.component';
+import {MovieComponent} from './movie/movie.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { ScreeningsListComponent } from './screenings-list/screenings-list.component';
-import { ScreeningComponent } from './screening/screening.component';
-import { HomeComponent } from './home/home.component';
-import { SearchComponent } from './search/search.component';
+import {ScreeningsListComponent} from './screenings-list/screenings-list.component';
+import {ScreeningComponent} from './screening/screening.component';
+import {HomeComponent} from './home/home.component';
+import {SearchComponent} from './search/search.component';
 import {FormsModule} from '@angular/forms';
-import { LocationsComponent } from './locations/locations.component';
-import { BuyComponent } from './buy/buy.component';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {LocationsComponent} from './locations/locations.component';
+import {BuyComponent} from './buy/buy.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {OAuthModule} from 'angular-oauth2-oidc';
+import {ProfileComponent} from './profile/profile.component';
+import {AdminComponent} from './admin/admin.component';
+import {RedirectedComponent} from './redirected/redirected.component';
+import {AuthGuard} from './services/authguard.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,10 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     HomeComponent,
     SearchComponent,
     LocationsComponent,
-    BuyComponent
+    BuyComponent,
+    ProfileComponent,
+    AdminComponent,
+    RedirectedComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +52,14 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
       defaultLanguage: 'en'
     }),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OAuthModule.forRoot({
+      resourceServer: {
+        sendAccessToken: true
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

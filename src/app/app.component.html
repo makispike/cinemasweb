@@ -18,12 +18,12 @@
         </li>
         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">{{'Navbar.User.User' | translate}}</a>
           <div class="dropdown-menu" role="menu">
-            <a class="dropdown-item" role="presentation" href="#">{{'Navbar.User.Login' | translate}}</a>
-            <a class="dropdown-item" role="presentation" routerLink="profile">{{'Navbar.User.Profile' | translate}}</a>
-            <a class="dropdown-item" role="presentation" routerLink="admin">{{'Navbar.User.Administration' | translate}}</a>
-            <a class="dropdown-item" role="presentation" href="#">{{'Navbar.User.Logout' | translate}}</a></div>
+            <a class="dropdown-item" role="presentation" *ngIf="!isAuthenticated()" (click)="login()">{{'Navbar.User.Login' | translate}}</a>
+            <a class="dropdown-item" role="presentation" *ngIf="isAuthenticated()" routerLink="profile">{{'Navbar.User.Profile' | translate}}</a>
+            <a class="dropdown-item" role="presentation" *ngIf="isAdministrator()" routerLink="admin">{{'Navbar.User.Administration' | translate}}</a>
+            <a class="dropdown-item" role="presentation" *ngIf="isAuthenticated()" (click)="logoff()">{{'Navbar.User.Logout' | translate}}</a></div>
         </li>
-      </ul><button class="btn btn-secondary" type="button">{{'Navbar.Register' | translate}}</button></div>
+      </ul><button class="btn btn-secondary" *ngIf="!isAuthenticated()" type="button">{{'Navbar.Register' | translate}}</button></div>
   </div>
 </nav>
 <router-outlet></router-outlet>

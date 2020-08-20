@@ -1,5 +1,6 @@
 import {Movie} from './movie';
 import {Venue} from './venue';
+import {Version} from './version';
 
 export interface Screening {
   screeningId: number;
@@ -8,4 +9,5 @@ export interface Screening {
   availableSeats: number;
   venue: Venue;
   movie: Movie;
+  version: Version;
 }

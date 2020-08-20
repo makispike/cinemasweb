@@ -10,10 +10,14 @@
       <li [hidden] = "!(this.appComponent.languageInUse === 'en')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllEnglishGenres()}}</li>
       <li [hidden] = "!(this.appComponent.languageInUse === 'fr')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllFrenchGenres()}}</li>
       <li [hidden] = "!(this.appComponent.languageInUse === 'nl')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllDutchGenres()}}</li>
-      <li><b>{{'Screenings.Version' | translate}}</b> {{getAllVersions()}}</li>
+      <li><b>{{'Screenings.Version' | translate}}</b> {{screening.version.versionLabel}}</li>
       <li><b>{{'Screenings.AvailableSeats' | translate}}</b> {{screening.availableSeats}}</li>
       <li><b>{{'Screenings.Time' | translate}}</b> {{screening.screeningTime}}</li>
     </ul>
   </td>
-  <td class="align-middle" style="width: 30%"><button class="btn btn-secondary" type="button" (click)="onBuy()">{{'Screenings.Buy' | translate}}</button></td>
+  <td class="align-middle" style="width: 30%">
+    <button class="btn btn-secondary" [routerLink]="['/buy']"
+            [queryParams]="{ screeningId: screening.screeningId }" queryParamsHandling="merge" type="button">{{'Screenings.Buy' | translate}}
+    </button>
+  </td>
 </tr>

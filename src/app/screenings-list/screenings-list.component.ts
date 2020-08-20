@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ScreeningserviceService} from '../services/screeningservice.service';
-import {Screening} from '../services/screening';
+import {ScreeningService} from '../services/screening.service';
+import {Screening} from '../services/models/screening';
 
 @Component({
   selector: 'app-screenings-list',
@@ -9,41 +9,9 @@ import {Screening} from '../services/screening';
 })
 export class ScreeningsListComponent implements OnInit {
   screeningsList: Screening[];
-  movies = [
-    {
-      title: 'Pulp Fiction',
-      location: 'lol',
-      venue: 'Kinepolis Antwerpen',
-      genres: ['action', 'romance'] ,
-      versions: ['VOST', 'VF'],
-      availableSeats: '5',
-      time: '12:00',
-      urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
-    },
-    {
-      title: 'Pulp Fiction',
-      location: 'lol',
-      venue: 'Kinepolis Antwerpen',
-      genres: ['action', 'romance'] ,
-      versions: ['VOST', 'VF'],
-      availableSeats: '5',
-      time: '12:00',
-      urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
-    },
-    {
-      title: 'Pulp Fiction',
-      location: 'lol',
-      venue: 'Kinepolis Antwerpen',
-      genres: ['action', 'romance'] ,
-      versions: ['VOST', 'VF'],
-      availableSeats: '5',
-      time: '12:00',
-      urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
-    },
-  ];
   selectedDate: string;
 
-  constructor(public screeningsService: ScreeningserviceService) { }
+  constructor(public screeningsService: ScreeningService) { }
 
   ngOnInit(): void {
     this.fetchAllScreenings();

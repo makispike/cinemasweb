@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ScreeningService} from '../services/screening.service';
+import {Screening} from '../services/models/screening';
 
 @Component({
   selector: 'app-search',
@@ -6,43 +8,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  showDate: boolean;
-  movies = [
-    {
-      title: 'Pulp Fiction',
-      location: 'lol',
-      venue: 'Kinepolis Antwerpen',
-      genres: ['action', 'romance'],
-      versions: ['VOST', 'VF'],
-      availableSeats: '5',
-      time: '12:00',
-      urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
-    },
-    {
-      title: 'Pulp Fiction',
-      location: 'lol',
-      venue: 'Kinepolis Antwerpen',
-      genres: ['action', 'romance'],
-      versions: ['VOST', 'VF'],
-      availableSeats: '5',
-      time: '12:00',
-      urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
-    },
-    {
-      title: 'Pulp Fiction',
-      location: 'lol',
-      venue: 'Kinepolis Antwerpen',
-      genres: ['action', 'romance'],
-      versions: ['VOST', 'VF'],
-      availableSeats: '5',
-      time: '12:00',
-      urlPhoto: 'https://i.imgur.com/3nyHwyb.png'
-    },
-  ];
-
-  constructor() {
-  }
-
+  screeningsList: Screening[];
+  showDate = false;
+  showGenre = false;
+  showTitle = true;
+  showLocation = false;
   selectedLevel;
   data: Array<object> = [
     {id: 0, name: 'By title'},
@@ -51,11 +21,39 @@ export class SearchComponent implements OnInit {
     {id: 3, name: 'By date'}
   ];
 
+  constructor(private screeningsService: ScreeningService) {
+  }
+
   selected() {
-    this.showDate = this.selectedLevel.id === 3;
+    if (this.selectedLevel.id === 0) {
+      this.showTitle = true;
+      this.showGenre = false;
+      this.showLocation = false;
+      this.showDate = false;
+    } else if (this.selectedLevel.id === 1) {
+      this.showTitle = false;
+      this.showGenre = true;
+      this.showLocation = false;
+      this.showDate = false;
+    } else if (this.selectedLevel.id === 2) {
+      this.showTitle = false;
+      this.showGenre = false;
+      this.showLocation = true;
+      this.showDate = false;
+    } else if (this.selectedLevel.id === 3) {
+      this.showTitle = false;
+      this.showGenre = false;
+      this.showLocation = false;
+      this.showDate = true;
+    }
   }
 
   ngOnInit(): void {
+    this.fetchAllScreenings();
+  }
+
+  fetchAllScreenings(): void {
+    this.screeningsService.getAllScreenings().subscribe(screenings => this.screeningsList = screenings);
   }
 
 }

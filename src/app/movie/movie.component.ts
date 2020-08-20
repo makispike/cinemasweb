@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MovieserviceService} from '../services/movieservice.service';
-import {Movie} from '../services/movie';
+import {MovieService} from '../services/movie.service';
+import {Movie} from '../services/models/movie';
 import {AppComponent} from '../app.component';
 
 @Component({
@@ -11,7 +11,7 @@ import {AppComponent} from '../app.component';
 export class MovieComponent implements OnInit {
   @Input() movie: Movie;
 
-  constructor(public moviesService: MovieserviceService, public appComponent: AppComponent) { }
+  constructor(public moviesService: MovieService, public appComponent: AppComponent) { }
 
   ngOnInit(): void {
   }
