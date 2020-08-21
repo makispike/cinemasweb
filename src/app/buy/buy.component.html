@@ -15,18 +15,59 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-left" style="border-width: 2px;border-style: solid;border-radius: 11px;">
-        <form style="margin-top: 10px;margin-right: 10px;margin-bottom: 10px;margin-left: 10px;">
-          <div *ngIf="(getLanguageInUse() === 'en')" class="form-group"><label for="titleEN">{{'Buy.MovieTitle' | translate}}</label><input class="form-control form-control-sm" type="text" id="titleEN" name="title" disabled="" style="width: auto" value="{{this.movieTitleEN}}"></div>
-          <div *ngIf="(getLanguageInUse() === 'fr')" class="form-group"><label for="titleFR">{{'Buy.MovieTitle' | translate}}</label><input class="form-control form-control-sm" type="text" id="titleFR" name="title" disabled="" style="width: auto" value="{{this.movieTitleFR}}"></div>
-          <div *ngIf="(getLanguageInUse() === 'nl')" class="form-group"><label for="titleNL">{{'Buy.MovieTitle' | translate}}</label><input class="form-control form-control-sm" type="text" id="titleNL" name="title" disabled="" style="width: auto" value="{{this.movieTitleNL}}"></div>
-          <div class="form-group"><label for="location">{{'Buy.Location' | translate}}</label><input class="form-control form-control-sm" type="text" id="location" name="location" disabled="" style="width: auto" value="{{this.screeningLocation}}"></div>
-          <div class="form-group"><label for="venue">{{'Buy.Venue' | translate}}</label><input class="form-control form-control-sm" type="text" id="venue" name="venue" disabled="" style="width: auto" value="{{this.screeningVenue}}"></div>
-          <div class="form-group"><label for="date">{{'Buy.Date' | translate}}</label><input class="form-control form-control-sm" type="text" id="date" name="date" disabled="" style="width: auto" value="{{this.screeningDate | date:'dd/MM/yyyy HH:mm'}}"></div>
-          <div class="form-group"><label for="title">{{'Buy.Version' | translate}}</label>
-            <div class="form-check" id="langFR"><input class="form-check-input" type="checkbox" id="checkFR" disabled="" [checked]="screeningVersion === 'FR'"><label class="form-check-label" name="versionFR" for="checkFR">FR</label></div>
-            <div class="form-check" id="langNL"><input class="form-check-input" type="checkbox" id="checkNL" disabled="" [checked]="screeningVersion === 'NL'"><label class="form-check-label" name="versionNL" for="checkNL">NL</label></div>
-            <div class="form-check" id="langEN"><input class="form-check-input" type="checkbox" id="checkEN" disabled="" [checked]="screeningVersion === 'EN'"><label class="form-check-label" name="versionEN" for="checkEN">EN</label></div>
-            <div class="form-check" id="langVOST"><input class="form-check-input" type="checkbox" id="checkVOST" disabled="" [checked]="screeningVersion === 'VOST'"><label class="form-check-label" name="versionVOST" for="checkVOST">VOST</label></div>
+        <form (ngSubmit)="onSubmit()" style="margin-top: 10px;margin-right: 10px;margin-bottom: 10px;margin-left: 10px;">
+          <div *ngIf="(getLanguageInUse() === 'en')" class="form-group">
+            <label for="titleEN">{{'Buy.MovieTitle' | translate}}</label>
+            <input class="form-control form-control-sm" type="text" id="titleEN" name="title"
+                                                                         disabled="" style="width: auto"
+                                                                         value="{{this.movieTitleEN}}">
+          </div>
+          <div *ngIf="(getLanguageInUse() === 'fr')" class="form-group">
+            <label for="titleFR">{{'Buy.MovieTitle' | translate}}</label>
+            <input class="form-control form-control-sm" type="text" id="titleFR" name="title"
+                                                                         disabled="" style="width: auto"
+                                                                         value="{{this.movieTitleFR}}">
+          </div>
+          <div *ngIf="(getLanguageInUse() === 'nl')" class="form-group">
+            <label for="titleNL">{{'Buy.MovieTitle' | translate}}</label>
+            <input class="form-control form-control-sm" type="text" id="titleNL" name="title"
+                                                                         disabled="" style="width: auto"
+                                                                         value="{{this.movieTitleNL}}">
+          </div>
+          <div class="form-group">
+            <label for="location">{{'Buy.Location' | translate}}</label>
+            <input class="form-control form-control-sm" type="text" id="location" name="location" disabled=""
+                   style="width: auto" value="{{this.screeningLocation}}">
+          </div>
+          <div class="form-group">
+            <label for="venue">{{'Buy.Venue' | translate}}</label>
+            <input class="form-control form-control-sm" type="text" id="venue" name="venue" disabled="" style="width: auto"
+                   value="{{this.screeningVenue}}"></div>
+          <div class="form-group">
+            <label for="date">{{'Buy.Date' | translate}}</label>
+            <input class="form-control form-control-sm" type="text" id="date" name="date" disabled="" style="width: auto"
+                   value="{{this.screeningDate | date:'dd/MM/yyyy HH:mm'}}">
+          </div>
+          <div class="form-group">
+            <label for="title">{{'Buy.Version' | translate}}</label>
+            <div class="form-check" id="langFR">
+              <input class="form-check-input" type="checkbox" id="checkFR" disabled=""
+                     [checked]="screeningVersion === 'FR'">
+              <label class="form-check-label" name="versionFR" for="checkFR">FR</label>
+            </div>
+            <div class="form-check" id="langNL">
+              <input class="form-check-input" type="checkbox" id="checkNL" disabled=""
+                     [checked]="screeningVersion === 'NL'">
+              <label class="form-check-label" name="versionNL" for="checkNL">NL</label>
+            </div>
+            <div class="form-check" id="langEN">
+              <input class="form-check-input" type="checkbox" id="checkEN" disabled="" [checked]="screeningVersion === 'EN'">
+              <label class="form-check-label" name="versionEN" for="checkEN">EN</label>
+            </div>
+            <div class="form-check" id="langVOST">
+              <input class="form-check-input" type="checkbox" id="checkVOST" disabled="" [checked]="screeningVersion === 'VOST'">
+              <label class="form-check-label" name="versionVOST" for="checkVOST">VOST</label>
+            </div>
           </div>
           <div class="table-responsive table-borderless">
             <table class="table table-bordered">
@@ -36,26 +77,42 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let priceCategory of priceCategories">
+              <tr *ngFor="let priceCategory of priceCategories, let i = index">
                 <td style="width: 20%;">
                   <div class="form-group">
-                    <label *ngIf="(getLanguageInUse() === 'en')" for="category">{{priceCategory.priceCategoryNameEN}} ({{priceCategory.priceCategoryPrice}}€)</label>
-                    <label *ngIf="(getLanguageInUse() === 'fr')" for="category">{{priceCategory.priceCategoryNameFR}} ({{priceCategory.priceCategoryPrice}}€)</label>
-                    <label *ngIf="(getLanguageInUse() === 'nl')" for="category">{{priceCategory.priceCategoryNameNL}} ({{priceCategory.priceCategoryPrice}}€)</label>
-                    <input class="form-control form-control-sm" type="number" id="category" name="pricecategory" value="0" style="width: 100px"></div>
+                    <label *ngIf="(getLanguageInUse() === 'en')"
+                           for="pricecategory">{{priceCategory.priceCategoryNameEN}} ({{priceCategory.priceCategoryPrice}}€)
+                    </label>
+                    <label *ngIf="(getLanguageInUse() === 'fr')"
+                           for="pricecategory">{{priceCategory.priceCategoryNameFR}} ({{priceCategory.priceCategoryPrice}}€)
+                    </label>
+                    <label *ngIf="(getLanguageInUse() === 'nl')"
+                           for="pricecategory">{{priceCategory.priceCategoryNameNL}} ({{priceCategory.priceCategoryPrice}}€)
+                    </label>
+                    <input class="form-control form-control-sm" type="text" id="pricecategory" name="pricecategory"
+                           value="0" style="width: 100px"(change)="onAmountChanged()" [(ngModel)]="ticketsToCreate[i]">
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td style="width: 20%;">
-                  <div class="form-group"><label for="priceTotal" style="font-weight: bold;">{{'Buy.TotalPrice' | translate}}</label><input class="form-control form-control-sm" type="text" id="priceTotal" name="priceTotal" value="0€" disabled="" style="width: 100px"></div>
+                  <div class="form-group">
+                    <label for="priceTotal" style="font-weight: bold;">{{'Buy.TotalPrice' | translate}}</label>
+                    <input class="form-control form-control-sm" type="text" id="priceTotal" name="priceTotal" [value]="totalPrice + '€'"
+                           disabled="" style="width: 100px">
+                  </div>
                 </td>
               </tr>
               </tbody>
             </table>
           </div>
           <div class="col text-center">
-            <button class="btn btn-info" type="submit" style="margin-bottom: 19px;">{{'Buy.CheckoutButton' | translate}}</button><br>
-            <button class="btn btn-danger" type="button" style="margin-bottom: 19px;" (click)="onBack()">{{'Buy.BackButton' | translate}}</button></div>
+            <p *ngIf="success" class="text-danger">OK</p>
+            <button *ngIf="!confirmed" (click)="confirmed = true" class="btn btn-info" type="button" style="margin-bottom: 19px;">{{'Buy.ConfirmButton' | translate}}</button>
+            <button *ngIf="confirmed" class="btn btn-success" type="submit" style="margin-bottom: 19px;">{{'Buy.CheckoutButton' | translate}}</button>
+            <br>
+            <button class="btn btn-danger" type="button" style="margin-bottom: 19px;" (click)="onBack()">{{'Buy.BackButton' | translate}}</button>
+          </div>
         </form>
       </div>
     </div>

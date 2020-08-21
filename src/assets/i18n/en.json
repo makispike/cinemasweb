@@ -82,7 +82,8 @@
     "AmountOfTickets": "Amount of tickets",
     "TotalPrice": "Total",
     "CheckoutButton": "Checkout",
-    "BackButton": "Back to screenings"
+    "BackButton": "Back to screenings",
+    "ConfirmButton": "Confirm"
   },
   "Profile": {
 

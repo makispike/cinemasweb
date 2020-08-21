@@ -12,16 +12,16 @@
       <div class="col-md-12 d-inline-flex">
         <form class="form-inline col-md-12 text-lowercase d-xl-flex justify-content-xl-center" method="get">
           <div class="form-group" style="margin-right: 10px;">
-            <input *ngIf="showTitle" class="form-control form-control-sm" type="search" style="border-width: 1px;" name="titleSearch" placeholder="{{'Search.SearchBoxPlaceholder' | translate}}">
-            <input *ngIf="showGenre" class="form-control form-control-sm" type="search" style="border-width: 1px;" name="genreSearch" placeholder="{{'Search.SearchBoxPlaceholder' | translate}}">
-            <input *ngIf="showLocation" class="form-control form-control-sm" type="search" style="border-width: 1px;" name="locationSearch" placeholder="{{'Search.SearchBoxPlaceholder' | translate}}">
-            <input *ngIf="showDate" class="form-control form-control-sm d-xl-flex" type="date" name="screeningDate" style="border-radius: 7px;border-width: 1px;border-style: solid;">
+            <input *ngIf="showTitle" [(ngModel)]="desiredTitle" class="form-control form-control-sm" type="search" style="border-width: 1px;" name="titleSearch" placeholder="{{'Search.SearchBoxPlaceholder' | translate}}">
+            <input *ngIf="showGenre" [(ngModel)]="desiredGenre" class="form-control form-control-sm" type="search" style="border-width: 1px;" name="genreSearch" placeholder="{{'Search.SearchBoxPlaceholder' | translate}}">
+            <input *ngIf="showLocation" [(ngModel)]="desiredLocation" class="form-control form-control-sm" type="search" style="border-width: 1px;" name="locationSearch" placeholder="{{'Search.SearchBoxPlaceholder' | translate}}">
+            <input *ngIf="showDate" [(ngModel)]="desiredDate" class="form-control form-control-sm d-xl-flex" type="date" name="screeningDate" style="border-radius: 7px;border-width: 1px;border-style: solid;">
             <select [(ngModel)]="selectedLevel" [ngModelOptions]="{standalone: true}" (change)="selected()"
               class="border rounded custom-select custom-select-sm" style="margin-left: 10px;">
               <option *ngFor="let item of data" [ngValue]="item">{{item.name}}</option>
             </select>
           </div>
-          <div class="btn-group" role="group"><button class="btn btn-secondary" type="submit" style="margin-left: 0px;">{{'Search.SearchButton' | translate}}</button></div>
+          <div class="btn-group" role="group"><button class="btn btn-secondary" type="submit" style="margin-left: 0px;" (click)="filterBySelection()">{{'Search.SearchButton' | translate}}</button></div>
         </form>
       </div>
       <div class="col-md-12" style="margin-top: 8px;margin-bottom: 8px;">
@@ -42,8 +42,9 @@
                 </tr>
                 </thead>
                 <tbody style="border-style: none;">
-                <app-screening *ngFor="let screening of screeningsList"
-                               [screening] = 'screening'></app-screening>
+                <app-screening *ngFor="let screening of filteredScreenings"
+                               [screening] = 'screening'
+                               [filtered]="this.filtered"></app-screening>
                 </tbody>
               </table>
             </div>

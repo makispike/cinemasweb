@@ -1,4 +1,3 @@
-import {Screening} from './screening';
 import {Location} from './location';
 
 export interface Pricecategory {

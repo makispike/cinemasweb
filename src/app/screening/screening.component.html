@@ -2,14 +2,14 @@
   <td class="text-center" style="width: 30%"><img style="width: 120px;height: 180px;" [src]='screening.movie.moviePictureUrl'></td>
   <td style="width: 40%" style="margin-left: 20px; margin-right: 20px">
     <ul>
-      <li [hidden] = "!(this.appComponent.languageInUse === 'en')"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameEN}}</li>
-      <li [hidden] = "!(this.appComponent.languageInUse === 'fr')"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameFR}}</li>
-      <li [hidden] = "!(this.appComponent.languageInUse === 'nl')"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameNL}}</li>
+      <li *ngIf = "(this.appComponent.languageInUse === 'en')" id="EN"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameEN}}</li>
+      <li *ngIf = "(this.appComponent.languageInUse === 'fr')" id="FR"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameFR}}</li>
+      <li *ngIf = "(this.appComponent.languageInUse === 'nl')" id="NL"><b>{{'Screenings.Movie' | translate}}</b> {{screening.movie.movieNameNL}}</li>
       <li><b>{{'Screenings.Location' | translate}}</b> {{screening.venue.location.locationName}}</li>
       <li><b>{{'Screenings.Venue' | translate}}</b> {{screening.venue.venueNumber}}</li>
-      <li [hidden] = "!(this.appComponent.languageInUse === 'en')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllEnglishGenres()}}</li>
-      <li [hidden] = "!(this.appComponent.languageInUse === 'fr')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllFrenchGenres()}}</li>
-      <li [hidden] = "!(this.appComponent.languageInUse === 'nl')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllDutchGenres()}}</li>
+      <li *ngIf = "(this.appComponent.languageInUse === 'en')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllEnglishGenres()}}</li>
+      <li *ngIf = "(this.appComponent.languageInUse === 'fr')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllFrenchGenres()}}</li>
+      <li *ngIf = "(this.appComponent.languageInUse === 'nl')"><b>{{'Screenings.Genre' | translate}}</b> {{getAllDutchGenres()}}</li>
       <li><b>{{'Screenings.Version' | translate}}</b> {{screening.version.versionLabel}}</li>
       <li><b>{{'Screenings.AvailableSeats' | translate}}</b> {{screening.availableSeats}}</li>
       <li><b>{{'Screenings.Time' | translate}}</b> {{screening.screeningTime}}</li>

@@ -82,7 +82,8 @@
     "AmountOfTickets": "Nombre de tickets",
     "TotalPrice": "Prix total",
     "CheckoutButton": "Soumettre",
-    "BackButton": "Retour aux séances"
+    "BackButton": "Retour aux séances",
+    "ConfirmButton": "Confirmer"
   },
   "Profile": {
 

@@ -1,41 +1,49 @@
-<div class="item" style="margin-right: 10px;margin-bottom: 10px;border-radius: 10px;border-width: 2px;border-style: solid;">
+<div class="item"
+     style="margin-right: 10px;margin-bottom: 10px;border-radius: 10px;border-width: 2px;border-style: solid;">
   <div class="table-responsive table-borderless">
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th [hidden]="!(appComponent.languageInUse === 'en')" class="border rounded-0 border-white"><strong>{{movie.movieNameEN}}</strong><br></th>
+        <th *ngIf="(appComponent.languageInUse === 'en')" class="border rounded-0 border-white">
+          <strong>{{movie.movieNameEN}}</strong><br></th>
       </tr>
       <tr>
-        <th [hidden]="!(appComponent.languageInUse === 'fr')" class="border rounded-0 border-white"><strong>{{movie.movieNameFR}}</strong><br></th>
+        <th *ngIf="(appComponent.languageInUse === 'fr')" class="border rounded-0 border-white">
+          <strong>{{movie.movieNameFR}}</strong><br></th>
       </tr>
       <tr>
-        <th [hidden]="!(appComponent.languageInUse === 'nl')" class="border rounded-0 border-white"><strong>{{movie.movieNameNL}}</strong><br></th>
+        <th *ngIf="(appComponent.languageInUse === 'nl')" class="border rounded-0 border-white">
+          <strong>{{movie.movieNameNL}}</strong><br></th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <td class="border-white"><img src="{{movie.moviePictureUrl}}" class="img-fluid" width="360px" height="540px" style="width: 120px;height: 180px;"></td>
+        <td class="border-white"><img src="{{movie.moviePictureUrl}}" class="img-fluid" width="360px" height="540px"
+                                      style="width: 120px;height: 180px;"></td>
       </tr>
       <tr>
-        <td [hidden]="!(appComponent.languageInUse === 'en')" class="border rounded-0 border-white">{{movie.movieDescriptionEN}}<br></td>
+        <td *ngIf="(appComponent.languageInUse === 'en')"
+            class="border rounded-0 border-white">{{movie.movieDescriptionEN}}<br></td>
       </tr>
       <tr>
-        <td [hidden]="!(appComponent.languageInUse === 'fr')" class="border rounded-0 border-white">{{movie.movieDescriptionFR}}<br></td>
+        <td *ngIf="(appComponent.languageInUse === 'fr')"
+            class="border rounded-0 border-white">{{movie.movieDescriptionFR}}<br></td>
       </tr>
       <tr>
-        <td [hidden]="!(appComponent.languageInUse === 'nl')" class="border rounded-0 border-white">{{movie.movieDescriptionNL}}<br></td>
+        <td *ngIf="(appComponent.languageInUse === 'nl')"
+            class="border rounded-0 border-white">{{movie.movieDescriptionNL}}<br></td>
       </tr>
-      <tr [hidden]="!(appComponent.languageInUse === 'en')">
+      <tr *ngIf="(appComponent.languageInUse === 'en')">
         <td class="border rounded-0 border-white">
           <p class="description"><b>{{'Movies.Versions' | translate }}</b> {{getAllVersions()}}</p>
           <p class="description"><b>{{'Movies.Genres' | translate }}</b> {{getAllEnglishGenres()}}</p><br></td>
       </tr>
-      <tr [hidden]="!(appComponent.languageInUse === 'fr')">
+      <tr *ngIf="(appComponent.languageInUse === 'fr')">
         <td class="border rounded-0 border-white">
           <p class="description"><b>{{'Movies.Versions' | translate }}</b> {{getAllVersions()}}</p>
           <p class="description"><b>{{'Movies.Genres' | translate }}</b> {{getAllFrenchGenres()}}</p><br></td>
       </tr>
-      <tr [hidden]="!(appComponent.languageInUse === 'nl')">
+      <tr *ngIf="(appComponent.languageInUse === 'nl')">
         <td class="border rounded-0 border-white">
           <p class="description"><b>{{'Movies.Versions' | translate }}</b> {{getAllVersions()}}</p>
           <p class="description"><b>{{'Movies.Genres' | translate }}</b> {{getAllDutchGenres()}}</p><br></td>

@@ -21,7 +21,7 @@ export class LocationService {
   private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
       // show the error in the console
-      console.error('Error calling the locations API: ' + error);
+      console.error('Error calling the locations API: ' + error.message);
       // return empty result.
       return of(result as T);
     };

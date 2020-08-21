@@ -10,7 +10,7 @@ import {ScreeningsListComponent} from './screenings-list/screenings-list.compone
 import {ScreeningComponent} from './screening/screening.component';
 import {HomeComponent} from './home/home.component';
 import {SearchComponent} from './search/search.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LocationsComponent} from './locations/locations.component';
 import {BuyComponent} from './buy/buy.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -21,6 +21,8 @@ import {ProfileComponent} from './profile/profile.component';
 import {AdminComponent} from './admin/admin.component';
 import {RedirectedComponent} from './redirected/redirected.component';
 import {AuthGuard} from './services/authguard.service';
+import {UserService} from './services/user.service';
+import {BuyService} from './services/buy.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import {AuthGuard} from './services/authguard.service';
       defaultLanguage: 'en'
     }),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
@@ -59,7 +62,7 @@ import {AuthGuard} from './services/authguard.service';
       }
     })
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, UserService, BuyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

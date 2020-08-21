@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'screenings', component: ScreeningsListComponent},
   { path: 'search', component: SearchComponent},
   { path: 'locations', component: LocationsComponent},
-  { path: 'buy', component: BuyComponent},
+  { path: 'buy', data: { roles: ['app-user'] }, canActivate: [AuthGuard], component: BuyComponent},
   { path: 'home', component: HomeComponent},
   { path: 'redirected', component: RedirectedComponent},
   { path: 'profile', data: { roles: ['app-user'] }, canActivate: [AuthGuard], component: ProfileComponent},

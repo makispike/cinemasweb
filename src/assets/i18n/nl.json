@@ -8,7 +8,7 @@
     "User": {
       "User": "Gebruiker",
       "Login": "Inloggen",
-      "Profile": "Gebruikersrofiel",
+      "Profile": "Gebruikersprofiel",
       "Administration": "Administratie",
       "Logout": "Uitloggen"
     },
@@ -82,7 +82,8 @@
     "AmountOfTickets": "Aantal tickets",
     "TotalPrice": "Totaalprijs",
     "CheckoutButton": "Reserveren",
-    "BackButton": "Terug naar de voorstellingen"
+    "BackButton": "Terug naar de voorstellingen",
+    "ConfirmButton": "Bevestig"
   },
   "Profile": {
 

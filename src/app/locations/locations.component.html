@@ -27,9 +27,9 @@
       </div>
       <div class="col-md-6">
         <h3>{{this.locationName}}</h3>
-        <p [hidden] = "!(this.appComponent.languageInUse === 'en')">{{this.detailsEN}}</p>
-        <p [hidden] = "!(this.appComponent.languageInUse === 'nl')">{{this.detailsNL}}</p>
-        <p [hidden] = "!(this.appComponent.languageInUse === 'fr')">{{this.detailsFR}}</p>
+        <p *ngIf = "(this.appComponent.languageInUse === 'en')">{{this.detailsEN}}</p>
+        <p *ngIf = "(this.appComponent.languageInUse === 'nl')">{{this.detailsNL}}</p>
+        <p *ngIf = "(this.appComponent.languageInUse === 'fr')">{{this.detailsFR}}</p>
         <ul>
           <li>{{'Locations.Venues' | translate}} {{this.numberOfVenues}}</li>
         </ul>

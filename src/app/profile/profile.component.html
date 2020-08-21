@@ -1,1 +1,60 @@
-<p>profile works!</p>
+<div class="map-clean" style="margin-top: 72px;">
+  <div class="container">
+    <div class="intro">
+      <h2 class="text-center">Your profile</h2>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form  class="text-center">
+          <div class="form-group">
+            <label for="firstName">First name</label>
+            <input class="form-control" type="text" id="firstName" style="text-align: center;" value="{{this.userFirstName}}" name="firstName" [(ngModel)]="this.userFirstName" >
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input class="form-control" type="text" id="lastName" style="text-align: center;" value="{{this.userLastName}}" name="lastName" [(ngModel)]="this.userLastName" >
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Contact email</label>
+            <input class="form-control" type="text" id="contactEmail" style="text-align: center;" value="{{this.userContactEmail}}" name="contactEmail" [(ngModel)]="this.userContactEmail">
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input class="form-control" type="text" id="address" style="text-align: center;" value="{{this.userAddress}}" name="address" [(ngModel)]="this.userAddress">
+          </div>
+          <button class="btn btn-secondary" type="submit" (click)="onSubmit()" >Submit</button>
+          <p *ngIf="success" class="text-danger">Success!</p>
+        </form>
+      </div>
+      <div class="col-md-12" style="margin-top: 71px;">
+        <h2 class="text-center">Past orders</h2>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th style="width: 30%;">Movie</th>
+              <th style="width: 20%;">Order date</th>
+              <th style="width: 20%;">Number of tickets</th>
+              <th style="width: 30%;">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reservation of this.reservations, let i = index">
+              <td *ngIf="getLanguageInUse() === 'en'" >{{movies[i].movieNameEN}}</td>
+              <td *ngIf="getLanguageInUse() === 'fr'">{{movies[i].movieNameFR}}</td>
+              <td *ngIf="getLanguageInUse() === 'nl'">{{movies[i].movieNameNL}}</td>
+              <td >{{reservation.reservationDateTime | date:'dd/MM/yyyy HH:mm'}}</td>
+              <td>{{reservation.tickets.length}}</td>
+              <td>{{reservation.totalPrice}}€</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

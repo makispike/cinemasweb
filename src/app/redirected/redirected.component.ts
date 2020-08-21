@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import {Subscription} from 'rxjs';
+import {UserService} from '../services/user.service';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-redirected',
@@ -11,8 +13,10 @@ import {Subscription} from 'rxjs';
 })
 export class RedirectedComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  constructor(private route: Router) {
+
+  constructor(private route: Router, public userService: UserService) {
   }
+
   // This component's sole function is to redirect the user from this page to /home
   // If this doesn't happen, the authentication methods don't trigger in the ngOnInit after the login and the data doesn't get updated
   ngOnInit(): void {

@@ -9,7 +9,7 @@ import {MovieService} from '../services/movie.service';
   styleUrls: ['./screening.component.css']
 })
 export class ScreeningComponent implements OnInit {
-  @Input() filtered;
+  @Input() filtered = false;
   @Input() selectedDate: string;
   @Input() screening: Screening;
   id: number;
