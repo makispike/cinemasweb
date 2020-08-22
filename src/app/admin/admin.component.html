@@ -1,1 +1,150 @@
-<p>admin works!</p>
+<div class="map-clean" style="margin-top: 72px;">
+  <div class="container text-center">
+    <div class="intro">
+      <h2 class="text-center">Administration</h2>
+      <p class="text-center">Use this page to add a new movie, a new location, or a new screening</p>
+    </div>
+    <select name="selectEntity" class="form-control-sm"[(ngModel)]="selectedOption"><option value="-1" selected></option><option value="location" selected>Location</option><option value="movie">Movie</option><option value="screening">Screening</option></select></div>
+  <div class="container">
+    <div class="intro">
+      <p class="text-center text-white bg-danger border rounded border-danger d-none">Error message</p>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 20px;">
+  <div class="container">
+    <div class="row">
+      <div *ngIf="selectedOption === 'movie'"  class="col-md-12" style="border-width: 2px;border-style: solid;">
+        <h4 class="text-center" style="margin-top: 11px;">Add/update a movie</h4>
+        <p class="text-center">Select a movie to update it, leave it blank to add one</p>
+        <form><select [(ngModel)]="selectedMovieOption" (change)="onChangeSelectedMovie()" *ngIf="getLanguageInUse() === 'en'" class="form-control form-control-sm" name="englishMovieSelect">
+          <option value="-1" selected></option>
+          <option *ngFor="let movie of movies; let i = index" [ngValue]="i">{{movies[i].movieNameEN}}</option></select>
+          <select [(ngModel)]="selectedMovieOption" (change)="onChangeSelectedMovie()" *ngIf="getLanguageInUse() === 'fr'" class="form-control form-control-sm" name="frenchMovieSelect">
+            <option value="" selected></option>
+            <option *ngFor="let movie of movies; let i = index" [ngValue]="i">{{movies[i].movieNameFR}}</option></select>
+          <select [(ngModel)]="selectedMovieOption" (change)="onChangeSelectedMovie()" *ngIf="getLanguageInUse() === 'nl'" class="form-control form-control-sm" name="dutchMovieSelect">
+            <option value="" selected>
+            <option *ngFor="let movie of movies; let i = index" [ngValue]="i">{{movies[i].movieNameNL}}</option></select>
+          <div class="form-group"><label for="frenchTitle"><br>French title<br></label><input [(ngModel)]="this.movieNameFR" class="form-control" type="text" id="frenchTitle" name="frenchTitle" value="{{this.movie.movieNameFR}}"></div>
+          <div class="form-group"><label for="dutchTitle">Dutch title<br></label><input [(ngModel)]="this.movieNameNL" class="form-control" type="text" id="dutchTitle" name="dutchTitle" value="{{this.movie.movieNameNL}}"></div>
+          <div class="form-group"><label for="englishTitle">English title<br></label><input [(ngModel)]="this.movieNameEN" class="form-control" type="text" id="englishTitle" name="englishTitle" value="{{this.movie.movieNameEN}}"></div>
+          <div class="form-group"><label for="moviePhotoURL">Photo URL<br></label><input [(ngModel)]="this.moviePictureUrl" class="form-control" type="text" id="moviePhotoURL" name="moviePhotoURL" value="{{this.movie.moviePictureUrl}}"></div>
+          <div class="form-group"><label for="movDescFR">French description<br></label><textarea [(ngModel)]="this.movieDescriptionFR" class="form-control form-control-lg" id="movDescFR" name="movDescFR">{{this.movie.movieDescriptionFR}}</textarea></div>
+          <div class="form-group"><label for="movDescNL">Dutch description<br></label><textarea [(ngModel)]="this.movieDescriptionNL" class="form-control form-control-lg" id="movDescNL" name="movDescNL">{{this.movie.movieDescriptionNL}}</textarea></div>
+          <div class="form-group"><label for="movDescEN">English description<br></label><textarea [(ngModel)]="this.movieDescriptionEN" class="form-control form-control-lg" id="movDescEN" name="movDescEN">{{this.movie.movieDescriptionEN}}</textarea></div>
+          <div class="form-group"><label>Versions</label>
+            <div class="form-check"><input [checked]="movieHasVersion('FR')" [(ngModel)]="this.versionFR" class="form-check-input" type="checkbox" id="formCheck-14" name="versionFR"><label class="form-check-label" for="formCheck-14">FR</label></div>
+            <div class="form-check"><input [checked]="movieHasVersion('NL')" [(ngModel)]="this.versionNL" class="form-check-input" type="checkbox" id="formCheck-15" name="versionNL"><label class="form-check-label" for="formCheck-15">NL</label></div>
+            <div class="form-check"><input [checked]="movieHasVersion('EN')" [(ngModel)]="this.versionEN" class="form-check-input" type="checkbox" id="formCheck-16" name="versionEN"><label class="form-check-label" for="formCheck-16">EN</label></div>
+            <div class="form-check"><input [checked]="movieHasVersion('VOST')" [(ngModel)]="this.versionVOST"  class="form-check-input" type="checkbox" id="formCheck-17" name="versionVOST"><label class="form-check-label" for="formCheck-17">VOST</label></div>
+          </div>
+          <div class="form-group">
+            <div class="table-responsive table-borderless">
+              <table class="table table-bordered">
+                <tbody>
+                <tr>
+                  <td class="text-center"><label>Genres</label></td>
+                  <td style="max-width: 20%;width: 161px;">
+                    <div class="form-check"><input [(ngModel)]="action" [checked]="movieHasGenre('Action')" class="form-check-input" type="checkbox" id="formCheck-18" name="Action"><label class="form-check-label" for="formCheck-18">Action</label></div>
+                    <div class="form-check"><input [(ngModel)]="comedy" [checked]="movieHasGenre('Comedy')" class="form-check-input" type="checkbox" id="formCheck-21" name="Comedy"><label class="form-check-label" for="formCheck-21">Comedy</label></div>
+                    <div class="form-check"><input [(ngModel)]="horror" [checked]="movieHasGenre('Horror')" class="form-check-input" type="checkbox" id="formCheck-22" name="Horror"><label class="form-check-label" for="formCheck-22">Horror</label></div>
+                    <div class="form-check"><input [(ngModel)]="romance" [checked]="movieHasGenre('Romance')" class="form-check-input" type="checkbox" id="formCheck-23" name="Romance"><label class="form-check-label" for="formCheck-23">Romance</label></div>
+                  </td>
+                  <td style="max-width: 20%;width: 600px;">
+                    <div class="form-check"><input [(ngModel)]="crime" [checked]="movieHasGenre('Crime')" class="form-check-input" type="checkbox" id="formCheck-19" name="Crime"><label class="form-check-label" for="formCheck-18">Crime</label></div>
+                    <div class="form-check"><input [(ngModel)]="animation" [checked]="movieHasGenre('Animation')" class="form-check-input" type="checkbox" id="formCheck-20" name="Animation"><label class="form-check-label" for="formCheck-21">Animation</label></div>
+                    <div class="form-check"><input [(ngModel)]="adventure" [checked]="movieHasGenre('Adventure')" class="form-check-input" type="checkbox" id="formCheck-24" name="Adventure"><label class="form-check-label" for="formCheck-22">Adventure</label></div>
+                    <div class="form-check"><input [(ngModel)]="scifi" [checked]="movieHasGenre('Scifi')" class="form-check-input" type="checkbox" id="formCheck-25" name="Scifi"><label class="form-check-label" for="formCheck-23">Scifi</label></div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+            <tr>
+              <td class="text-center"><button class="btn btn-primary" type="button" (click)="onSubmitMovie()">Submit</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="selectedOption === 'location'"  class="col-md-12" style="border-width: 2px;border-style: solid;margin: 0px;margin-top: 20px;">
+        <h4 class="text-center" style="margin-top: 11px;">Add/update a location</h4>
+        <p class="text-center">Select a location to update it, leave it blank to add one</p>
+        <form>
+          <select [(ngModel)]="selectedLocationOption" (change)="onChangeSelectedLocation()" class="form-control form-control-sm" name="locationSelector">
+            <option value="-1" selected></option>
+            <option *ngFor="let location of locations; let i = index" [ngValue]="i">{{locations[i].locationName}}</option></select>
+          <div class="form-group"><label><br>Location name<br></label><input class="form-control" type="text" name="locName" [(ngModel)]="this.locationName" value="{{this.location.locationName}}"></div>
+          <div class="form-group"><label>Photo URL<br></label><input class="form-control" type="text" name="locPhotoUrl" [(ngModel)]="this.locationPhotoUrl" value="{{this.location.locationPhotoUrl}}"></div>
+          <div class="form-group"><label>Address<br></label><input class="form-control" type="text" name="locAddress" [(ngModel)]="this.locationAddress" value="{{this.location.locationAddress}}"></div>
+          <div class="form-group"><label>French description<br></label><textarea [(ngModel)]="this.locationDescriptionFR" class="form-control form-control-lg" name="locDescFR">{{this.location.locationDescriptionFR}}</textarea></div>
+          <div class="form-group"><label>Dutch description<br></label><textarea [(ngModel)]="this.locationDescriptionNL" class="form-control form-control-lg" name="locDescNL">{{this.location.locationDescriptionNL}}</textarea></div>
+          <div class="form-group"><label>English description<br></label><textarea [(ngModel)]="this.locationDescriptionEN" class="form-control form-control-lg" name="locDescEN">{{this.location.locationDescriptionFR}}</textarea></div>
+        </form>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+            <tr>
+              <td class="text-center"><button class="btn btn-primary" type="button" (click)="onSubmitLocation()">Submit</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="selectedOption === 'screening'" class="col-md-12" style="border-width: 2px;border-style: solid;margin: 0px;margin-top: 20px;">
+        <h4 class="text-center" style="margin-top: 11px;">Add a screening</h4>
+        <form>
+          <select [(ngModel)]="selectedScreeningOption" (change)="onChangeSelectedScreening()" class="form-control form-control-sm" name="screeningSelector">
+            <option value="-1" selected></option>
+            <option *ngFor="let screening of screenings; let i = index" [ngValue]="i">{{screenings[i].venue.location.locationName + ' - ' + screenings[i].movie.movieNameEN + ' - ' + screenings[i].screeningDate + ' ' + screenings[i].screeningTime}}</option></select>
+          <div class="form-group"><label><br>Screening date<br></label><input [(ngModel)]="this.screeningDate" value="{{this.screening.screeningDate}}" class="form-control" type="date" name="screeningDate"></div>
+          <div class="form-group"><label>Screening time<br></label><input [(ngModel)]="this.screeningTime" value="{{this.screening.screeningTime}}" class="form-control" type="time" name="screeningTime"></div>
+          <div class="form-group"><label style="margin-right: 30px;">Number of seats<br></label><input class="form-control" type="text" name="screenSeats" [(ngModel)]="this.availableSeats" value="{{this.screening.availableSeats}}"></div>
+          <div
+            class="form-group"><label style="margin-right: 20px;">Movie<br></label>
+            <select [disabled]="selectedScreeningOption > -1" [(ngModel)]="selectedMovieOption" (change)="onChangeSelectedMovie()" *ngIf="getLanguageInUse() === 'en'" class="custom-select custom-select-sm" style="width: 50%;margin-left: 20px;" name="englishMovieSelectForScreening">
+              <option value="-1" selected></option>
+              <option *ngFor="let movie of movies; let i = index" [ngValue]="i">{{movies[i].movieNameEN}}</option></select>
+            <select [disabled]="selectedScreeningOption > -1" [(ngModel)]="selectedMovieOption" (change)="onChangeSelectedMovie()" *ngIf="getLanguageInUse() === 'fr'" class="custom-select custom-select-sm" style="width: 50%;margin-left: 20px;" name="frenchMovieSelectForScreening">
+              <option value="-1" selected></option>
+              <option *ngFor="let movie of movies; let i = index" [ngValue]="i">{{movies[i].movieNameFR}}</option></select>
+            <select [disabled]="selectedScreeningOption > -1" [(ngModel)]="selectedMovieOption" (change)="onChangeSelectedMovie()" *ngIf="getLanguageInUse() === 'nl'" class="custom-select custom-select-sm" style="width: 50%;margin-left: 20px;" name="dutchMovieSelectForScreening">
+              <option value="-1" selected>
+              <option *ngFor="let movie of movies; let i = index" [ngValue]="i">{{movies[i].movieNameNL}}</option></select></div>
+          <div
+            class="form-group"><label style="margin-right: 20px;">Location<br></label>
+            <select [disabled]="selectedScreeningOption > -1" [(ngModel)]="selectedLocationOption" (change)="onChangeLocationForScreening()" class="custom-select custom-select-sm" style="width: 50%;margin-left: 20px;" name="locationSelectorForScreening">
+              <option value="" selected></option>
+              <option *ngFor="let location of locations; let i = index" [ngValue]="i">{{locations[i].locationName}}</option></select>
+            </div>
+          <div
+            class="form-group"><label style="margin-right: 20px;">Venue<br></label>
+            <select [disabled]="selectedScreeningOption > -1" [(ngModel)]="selectedVenueOption" (change)="onChangeSelectedLocation()" class="custom-select custom-select-sm" style="width: 50%;margin-left: 20px;" name="venueSelectorForScreening">
+              <option *ngFor="let venue of venues; let i = index" [ngValue]="i">{{venue.venueNumber}}</option></select>
+          </div>
+          <div class="form-group"><label>Versions</label>
+            <div class="form-check"><input [checked]="screeningHasVersion('FR')" [(ngModel)]="this.scrVersionFR" class="form-check-input" type="checkbox"  name="scrversionFR"><label class="form-check-label" for="formCheck-14">FR</label></div>
+            <div class="form-check"><input [checked]="screeningHasVersion('NL')" [(ngModel)]="this.scrVersionNL" class="form-check-input" type="checkbox"  name="scrversionNL"><label class="form-check-label" for="formCheck-15">NL</label></div>
+            <div class="form-check"><input [checked]="screeningHasVersion('EN')" [(ngModel)]="this.scrVersionEN" class="form-check-input" type="checkbox"  name="scrversionEN"><label class="form-check-label" for="formCheck-16">EN</label></div>
+            <div class="form-check"><input [checked]="screeningHasVersion('VOST')" [(ngModel)]="this.scrVersionVOST"  class="form-check-input" type="checkbox"  name="scrversionVOST"><label class="form-check-label" for="formCheck-17">VOST</label></div>
+          </div>
+        </form>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+            <tr>
+              <td class="text-center"><button class="btn btn-primary" type="button"(click)="onSubmitScreening()" >Submit</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
