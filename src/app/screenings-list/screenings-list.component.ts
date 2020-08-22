@@ -20,9 +20,4 @@ export class ScreeningsListComponent implements OnInit {
   fetchAllScreenings(): void {
     this.screeningsService.getAllScreenings().subscribe(screenings => this.screeningsList = screenings);
   }
-
-  onChangeDate(): void {
-    console.log(this.selectedDate);
-    // this.screeningsService.getAllScreeningsByDate(date).subscribe(screenings => this.screeningsList = screenings);
-  }
 }

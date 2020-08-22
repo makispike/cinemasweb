@@ -10,31 +10,10 @@ import {Screening} from './models/screening';
 export class ScreeningService {
   constructor(private httpClient: HttpClient) { }
 
-  getAllScreeningsFromServer() {
-    this.httpClient
-      .get<any[]>('http://localhost:8081/screening/')
-      .subscribe(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.log('Error calling the screenings API: ' + error);
-        }
-      );
-  }
-
   getAllScreenings(): Observable<Screening[]> {
     return this.httpClient.get<Screening[]>('http://localhost:8081/screening/all')
       .pipe(
         tap(_ => console.log('Fetched all screenings' + _.entries())),
-        catchError(this.handleError<Screening[]>([]))
-      );
-  }
-
-  getAllScreeningsByDate(date: string): Observable<Screening[]> {
-    return this.httpClient.get<Screening[]>('http://localhost:8081/screening/bydate/' + date)
-      .pipe(
-        tap(_ => console.log('Fetched all screenings by date' + _.entries())),
         catchError(this.handleError<Screening[]>([]))
       );
   }

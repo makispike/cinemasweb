@@ -1,28 +1,17 @@
 import {Injectable} from '@angular/core';
-import {Observable, of, Subject} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {User} from './models/user';
-import {IdentityClaims} from './models/IdentityClaims';
 import {OAuthService} from 'angular-oauth2-oidc';
 import {Reservation} from './models/reservations';
-import {Screening} from './models/screening';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   serviceUrl = 'http://localhost:8081/user/';
-  idClaims: IdentityClaims;
   constructor(private httpClient: HttpClient, private oAuthService: OAuthService) {
-  }
-
-  getAllUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>('http://localhost:8081/user/all')
-      .pipe(
-        tap(_ => console.log('Fetched all users' + _.entries())),
-        catchError(this.handleError<User[]>([]))
-      );
   }
 
   getUserByEmail(email: string): Observable<User> {
@@ -46,21 +35,6 @@ export class UserService {
       .pipe(
         tap(_ => console.log('Fetched all screenings' + _.entries())),
         catchError(this.handleError<Reservation[]>([]))
-      );
-  }
-
-  registerNewUser(email: string) {
-    console.log('Registering new user with email ' + email);
-    return this.httpClient.post(this.serviceUrl, {userEmail: email}).subscribe({
-      next: data => console.log(data),
-      error: error => console.error('There was an error registering the user: ', error)
-    });
-  }
-
-  xxupdateUser(user: User): Observable<User> {
-    return this.httpClient.put<User>(this.serviceUrl + 'update', user)
-      .pipe(
-        catchError(this.handleError(user))
       );
   }
 

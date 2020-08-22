@@ -10,48 +10,14 @@ import {Genre} from './models/genre';
   providedIn: 'root'
 })
 export class MovieService {
-  private movieList: Movie[];
-  singleMovie: any = [];
-  movies = [
-    {
-      id: '1',
-      title: 'Pulp Fiction',
-      description: 'lol',
-      genres: ['action', 'romance'],
-      versions: ['VOST', 'VF'],
-      locations: ['Antwerpen', 'Hasselt'],
-    }
-  ];
 
   constructor(private httpClient: HttpClient) {
-  }
-
-  getAllMoviesFromServerOld() {
-    this.httpClient
-      .get<Movie[]>('http://localhost:8081/movies/all')
-      .subscribe(
-        (response) => {
-          this.movieList = response;
-          console.log(this.movieList);
-        },
-        (error) => {
-          this.handleError(error);
-        }
-      );
   }
 
   getAllMovies(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>('http://localhost:8081/movies/all')
       .pipe(
         tap(_ => console.log('Fetched all movies' + _.entries())),
-        catchError(this.handleError<Movie[]>([]))
-      );
-  }
-
-  getSingleMovie(id: number): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>('http://localhost:8081/movies/' + id)
-      .pipe(
-        tap(_ => console.log('Fetched movie with id ' + id)),
         catchError(this.handleError<Movie[]>([]))
       );
   }

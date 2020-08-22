@@ -80,16 +80,6 @@ export class AdminComponent implements OnInit {
     this.initAllValues();
   }
 
-  onChangeOptionSelection() {
-    if (this.selectedMovieOption > -1) {
-      this.initAllValues();
-    }
-    this.selectedMovieOption = -1;
-    this.selectedLocationOption = -1;
-    this.selectedScreeningOption = -1;
-    this.selectedVenueOption = -1;
-  }
-
   onChangeSelectedLocation() {
     if (this.selectedLocationOption > -1) {
       if (this.selectedLocationOption !== null && this.selectedLocationOption !== undefined && this.location !== undefined
@@ -538,6 +528,16 @@ export class AdminComponent implements OnInit {
 
   getLanguageInUse(): string {
     return this.appComponent.languageInUse;
+  }
+
+  onChangeOptionSelection() {
+    if (this.selectedMovieOption > -1) {
+      this.initAllValues();
+    }
+    this.selectedMovieOption = -1;
+    this.selectedLocationOption = -1;
+    this.selectedScreeningOption = -1;
+    this.selectedVenueOption = -1;
   }
 
 }

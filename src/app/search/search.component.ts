@@ -30,10 +30,6 @@ export class SearchComponent implements OnInit {
   constructor(private screeningsService: ScreeningService) {
   }
 
-  testThings() {
-    console.log(this.desiredTitle);
-  }
-
   selected() {
     if (this.selectedLevel.id === 0) {
       this.showTitle = true;

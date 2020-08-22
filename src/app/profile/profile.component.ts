@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // this is less than ideal, this needs to be reworked with a Promise, not a subscription. Too many errors
   getUserData(): void {
     const userId = Number(localStorage.getItem('userId'));
     this.userService.getReservationTicketsByByUserId(userId)

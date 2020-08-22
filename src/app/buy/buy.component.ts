@@ -69,6 +69,7 @@ export class BuyComponent implements OnInit, OnDestroy {
     this.confirmed = false;
   }
 
+  // create objects to make sure we have correctly structured DTOs
   onSubmit() {
     let i = 0;
     this.ticketsToSend = [];
@@ -120,6 +121,7 @@ export class BuyComponent implements OnInit, OnDestroy {
     this.router.navigate(['/screenings']);
   }
 
+  // these subscriptions could be done better with a Promise as we don't need a full subscription
   fetchScreening() {
     this.subscription2 = this.screeningsService.getSingleScreening(this.screeningId).subscribe(screening => {
       this.screening = screening;
